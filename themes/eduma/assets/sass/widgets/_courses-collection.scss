@@ -1,0 +1,65 @@
+.collection-grid-2 {
+	width: 100%;
+}
+
+.collection-grid-2 {
+	width: 50%;
+}
+
+.collection-grid-3 {
+	width: 33.33%;
+}
+
+.collection-grid-4 {
+	width: 25%;
+}
+
+.collection-grid-5 {
+	width: 20%;
+}
+
+[class*="collection-grid-"] {
+	float: left;
+	padding: 0 15px;
+}
+
+.thim-courses-collection {
+	.item {
+		position: relative;
+		overflow: hidden;
+		.title {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background: rgba(0, 0, 0, 0.7);
+			color: #fff;
+			font-size: 16px;
+			font-weight: 700;
+			text-align: center;
+			display: inline-block;
+			line-height: 20px;
+			padding: 15px 10px;
+			&:hover{
+				text-decoration: underline;
+			}
+		}
+		img{
+			@include transition(all 0.3s ease-in-out);
+		}
+		&:hover{
+			img{
+				@include scale(1.05, 1.05);
+			}
+			.title{
+				background: #000;
+			}
+		}
+	}
+	.collection-item{
+		margin-bottom: 30px;
+		&:last-child{
+			margin-bottom: 0;
+		}
+	}
+}

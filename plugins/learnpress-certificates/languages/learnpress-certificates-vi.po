@@ -1,0 +1,402 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Package Name\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-08-30 10:22+0000\n"
+"PO-Revision-Date: 2017-08-30 10:31+0000\n"
+"Last-Translator: admin <phonglq@foobla.com>\n"
+"Language-Team: Vietnamese\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: Loco - https://localise.biz/"
+
+#: incs/class-admin-settings.php:9 learnpress-certificates.php:169
+#: learnpress-certificates.php:520 learnpress-certificates.php:613
+#: learnpress-certificates.php:617
+msgid "Certificates"
+msgstr ""
+
+#: incs/class-admin-settings.php:37
+msgid "Settings"
+msgstr ""
+
+#: incs/class-admin-settings.php:48
+msgid "Share on social networks"
+msgstr ""
+
+#: incs/class-admin-settings.php:52
+msgid "Facebook"
+msgstr ""
+
+#: incs/class-admin-settings.php:58
+msgid "Twitter"
+msgstr ""
+
+#: incs/class-admin-settings.php:64
+msgid "Plusonce"
+msgstr ""
+
+#: incs/class-lp-certificate-field.php:25
+msgid "Font"
+msgstr ""
+
+#: incs/class-lp-certificate-field.php:32
+msgid "Font size"
+msgstr ""
+
+#: incs/class-lp-certificate-field.php:40
+msgid "Font style"
+msgstr ""
+
+#: incs/class-lp-certificate-field.php:43
+#: incs/class-lp-certificate-field.php:54
+#: incs/class-lp-certificate-field.php:64
+msgid "Normal"
+msgstr ""
+
+#: incs/class-lp-certificate-field.php:44
+msgid "Italic"
+msgstr ""
+
+#: incs/class-lp-certificate-field.php:45
+msgid "Oblique"
+msgstr ""
+
+#: incs/class-lp-certificate-field.php:51
+msgid "Font weight"
+msgstr ""
+
+#: incs/class-lp-certificate-field.php:55
+msgid "Bold"
+msgstr ""
+
+#: incs/class-lp-certificate-field.php:61
+msgid "Text decoration"
+msgstr ""
+
+#: incs/class-lp-certificate-field.php:65
+msgid "Underline"
+msgstr ""
+
+#: incs/class-lp-certificate-field.php:66
+msgid "Overline"
+msgstr ""
+
+#: incs/class-lp-certificate-field.php:67
+msgid "Line-through"
+msgstr ""
+
+#: incs/class-lp-certificate-field.php:73
+msgid "Color"
+msgstr ""
+
+#: incs/class-lp-certificate-field.php:79
+msgid "Text align"
+msgstr ""
+
+#: incs/class-lp-certificate-field.php:85
+msgid "Text vertical align"
+msgstr ""
+
+#: incs/class-lp-certificate-field.php:91
+msgid "Angle"
+msgstr ""
+
+#: incs/class-lp-certificate-field.php:99
+msgid "Scale X"
+msgstr ""
+
+#: incs/class-lp-certificate-field.php:108
+msgid "Scale Y"
+msgstr ""
+
+#: incs/class-lp-email-certificate-user.php:19
+#: incs/class-lp-email-certificate-user.php:27 learnpress-certificates.php:612
+#: learnpress-certificates.php:614 learnpress-certificates.php:715
+msgid "Certificate"
+msgstr ""
+
+#: incs/class-lp-email-certificate-user.php:26
+msgid "[{{site_title}}] You have received a certificate"
+msgstr ""
+
+#: incs/html/cert-design.php:10
+msgid "No template selected."
+msgstr ""
+
+#: incs/html/cert-design.php:11
+msgid "Select Template"
+msgstr ""
+
+#: incs/html/cert-design.php:12
+msgid "to starts design your favorite certificate now"
+msgstr ""
+
+#: incs/html/cert-design.php:44
+msgid "Student name"
+msgstr ""
+
+#: incs/html/cert-design.php:48
+msgid "Course name"
+msgstr ""
+
+#: incs/html/cert-design.php:52
+msgid "Course start date"
+msgstr ""
+
+#: incs/html/cert-design.php:56
+msgid "Course end date"
+msgstr ""
+
+#: incs/html/cert-design.php:60
+msgid "Current date"
+msgstr ""
+
+#: incs/html/cert-design.php:64
+msgid "Current time"
+msgstr ""
+
+#: incs/html/cert-design.php:68
+msgid "Custom"
+msgstr ""
+
+#: incs/html/cert-design.php:72
+msgid "Change template"
+msgstr ""
+
+#: incs/html/cert-design.php:84 templates/popup-cert.php:4
+msgid "Close"
+msgstr ""
+
+#: incs/html/cert-design.php:86
+msgid "Delete"
+msgstr ""
+
+#: incs/html/course-certs.php:12
+msgid "Select a Certificate"
+msgstr ""
+
+#: incs/html/course-certs.php:29
+msgid "Selected"
+msgstr ""
+
+#: incs/html/course-certs.php:30
+msgid "Select"
+msgstr ""
+
+#: incs/html/course-certs.php:31
+msgid "Remove"
+msgstr ""
+
+#: incs/html/course-certs.php:35
+msgid "Edit"
+msgstr ""
+
+#: incs/html/course-certs.php:45
+msgid "No certificates found"
+msgstr ""
+
+#: incs/html/course-certs.php:47
+msgid "Add new Certificate"
+msgstr ""
+
+#: incs/html/email-options.php:9
+msgid "Enable"
+msgstr ""
+
+#: incs/html/email-options.php:18
+msgid "Subject"
+msgstr ""
+
+#: incs/html/email-options.php:24
+msgid "Email subject, default: <code>%s</code>"
+msgstr ""
+
+#: incs/html/email-options.php:30
+msgid "Heading"
+msgstr ""
+
+#: incs/html/email-options.php:36
+msgid "Email heading, default: <code>%s</code>"
+msgstr ""
+
+#: incs/html/fields/font.php:17
+msgid "System fonts"
+msgstr ""
+
+#: incs/html/fields/font.php:27
+msgid "Google fonts"
+msgstr ""
+
+#: incs/html/fields/text-align.php:3
+msgid "Left"
+msgstr ""
+
+#: incs/html/fields/text-align.php:4
+msgid "Center"
+msgstr ""
+
+#: incs/html/fields/text-align.php:5
+msgid "Right"
+msgstr ""
+
+#: incs/html/fields/vertical-align.php:3
+msgid "Top"
+msgstr ""
+
+#: incs/html/fields/vertical-align.php:4
+msgid "Middle"
+msgstr ""
+
+#: incs/html/fields/vertical-align.php:5
+msgid "Bottom"
+msgstr ""
+
+#: learnpress-certificates.php:216
+msgid "Import Sample"
+msgstr ""
+
+#: learnpress-certificates.php:217
+msgid "Select a zip file"
+msgstr ""
+
+#: learnpress-certificates.php:218
+msgid "Do you want to import sample of certificate?"
+msgstr ""
+
+#: learnpress-certificates.php:349
+msgid "Import certificate successfully"
+msgstr ""
+
+#: learnpress-certificates.php:394
+msgid "Export"
+msgstr ""
+
+#: learnpress-certificates.php:542
+msgid "Display"
+msgstr ""
+
+#: learnpress-certificates.php:545
+msgid "Login name"
+msgstr ""
+
+#: learnpress-certificates.php:546
+msgid "Display name"
+msgstr ""
+
+#: learnpress-certificates.php:556
+msgid "Text"
+msgstr ""
+
+#: learnpress-certificates.php:569
+msgid "Format"
+msgstr ""
+
+#: learnpress-certificates.php:580
+msgid "Error!"
+msgstr ""
+
+#: learnpress-certificates.php:583
+msgid "Invalid field type!"
+msgstr ""
+
+#: learnpress-certificates.php:615
+msgid "Add New Certificate"
+msgstr ""
+
+#: learnpress-certificates.php:616
+msgid "Edit Certificate"
+msgstr ""
+
+#: learnpress-certificates.php:729
+msgid "Certificate Design"
+msgstr ""
+
+#: learnpress-certificates.php:979
+msgid "Courses"
+msgstr ""
+
+#: learnpress-certificates.php:981
+msgid "Preview"
+msgstr ""
+
+#: learnpress-certificates.php:1000
+msgid "-"
+msgstr ""
+
+#: learnpress-certificates.php:1030
+msgid "Unassigned"
+msgstr ""
+
+#: learnpress-certificates.php:1069
+msgid ""
+"<strong>Certificates</strong> addon version %s requires <strong>"
+"LearnPress</strong> version %s or higher"
+msgstr ""
+
+#: templates/cert-preview.php:12 templates/popup-cert.php:7
+msgid "View Certificate"
+msgstr "Xem chứng chỉ"
+
+#: templates/cert-preview.php:84
+msgid "Downloading..."
+msgstr ""
+
+#: templates/cert-preview.php:85
+msgid "Download as:"
+msgstr ""
+
+#: templates/cert-preview.php:86
+msgid "PNG"
+msgstr ""
+
+#: templates/cert-preview.php:88
+msgid "JPG"
+msgstr ""
+
+#: templates/cert-preview.php:90
+msgid "Print"
+msgstr ""
+
+#: templates/course-certificates.php:11
+msgid "You have not received any certificates yet!"
+msgstr ""
+
+#: templates/popup-cert.php:12
+msgid "Congrats! You have earned a certificate for this course"
+msgstr ""
+
+#. Name of the plugin
+msgid "LearnPress - Certificates"
+msgstr ""
+
+#. URI of the plugin
+msgid "http://thimpress.com/learnpress"
+msgstr ""
+
+#. Description of the plugin
+msgid "An addon for LearnPress plugin to create certificate for a course"
+msgstr ""
+
+#. Author of the plugin
+msgid "ThimPress"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "http://thimpress.com"
+msgstr ""
+
+#. Tags of the plugin/theme
+msgid "learnpress"
+msgstr ""
+
+#: learnpress-certificates.php:151
+msgid "View"
+msgstr "Xem"
+
+#: learnpress-certificates.php:215
+msgid "Import from Zip"
+msgstr "Nhập từ file Zip"

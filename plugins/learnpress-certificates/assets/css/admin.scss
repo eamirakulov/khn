@@ -1,0 +1,615 @@
+#learn-press-cert-meta-box .ui-sortable-handle,
+#learn-press-cert-meta-box .handlediv {
+    display: none;
+}
+
+#learn-press-cert-meta-box .inside {
+    padding: 0;
+    margin: 0;
+}
+
+#learn-press-cert-wrap {
+    margin-right: 270px;
+}
+
+#learn-press-cert-wrap:after {
+    clear: both;
+    content: '';
+    display: block;
+}
+
+#cert-design-view {
+    float: left;
+    width: 100%;
+}
+
+#cert-design-view-inside {
+    margin: 20px;
+    border: 1px solid #7bc5e8;
+    min-height: 500px;
+    position: relative;
+    overflow: hidden;
+}
+
+#learn-press-cert-wrap.has-template #cert-design-view-inside {
+    min-height: 0;
+}
+
+#cert-design-viewport .canvas-container {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+#cert-design-viewport img {
+    width: 100%;
+    height: auto;
+    vertical-align: top;
+    opacity: 0;
+}
+
+#cert-design-tools,
+#cert-design-field-settings {
+    float: right;
+    margin-right: -250px;
+    width: 250px;
+    border: 0px solid #DDD;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#cert-design-tools {
+    position: relative;
+    z-index: 99;
+}
+
+#cert-design-tools ul {
+    margin: 0;
+    padding: 0;
+}
+
+#cert-design-tools ul li {
+    position: relative;
+}
+
+#cert-design-tools ul li.ui-draggable-dragging {
+    width: 250px;
+    background: #FFF;
+}
+
+#cert-design-tools ul li a {
+    display: block;
+    text-decoration: none;
+    text-align: left;
+    border: 1px solid #DDD;
+    color: #CCC;
+    cursor: move;
+}
+
+#cert-design-tools ul li a:hover {
+    color: #0073aa;
+}
+
+#cert-design-tools ul li a:before {
+    font-family: dashicons;
+    display: inline-block;
+    font-size: 28px;
+    content: '';
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
+    line-height: 50px;
+    text-align: center;
+}
+
+#cert-design-tools li span {
+    position: absolute;
+    top: 50%;
+    margin-top: -8px;
+    right: 15px;
+    color: #CCC;
+    display: none;
+}
+
+#cert-design-tools li:hover span {
+    display: inline-block;
+}
+
+#cert-design-tools li span:hover {
+    color: #0073aa;
+    cursor: pointer;
+}
+
+#cert-design-tools ul li.student-name a:before {
+    content: "\f110";
+}
+
+#cert-design-tools ul li.course-name a:before {
+    content: "\f118";
+}
+
+#cert-design-tools ul li.course-start-date a:before {
+    content: "\f145";
+}
+
+#cert-design-tools ul li.course-end-date a:before {
+    content: "\f145";
+}
+
+#cert-design-tools ul li.current-date a:before {
+    content: "\f145";
+}
+
+#cert-design-tools ul li.current-time a:before {
+    content: "\f469";
+}
+
+#cert-design-tools ul li.custom a:before {
+    content: "\f464";
+}
+
+#cert-design-tools .learn-press-select-template-button {
+    display: none;
+}
+
+#no-template-selected {
+    color: #CCC;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    height: 200px;
+    top: 50%;
+    margin-top: -100px;
+}
+
+#no-template-selected h4 {
+    font-size: 24px;
+    font-weight: normal;
+}
+
+#no-template-selected h4.no-template-text-2 {
+    font-size: 16px;
+}
+
+#learn-press-cert-wrap.has-template #no-template-selected {
+    display: none;
+}
+
+#learn-press-cert-wrap.has-template #cert-design-tools .learn-press-select-template-button {
+    display: block;
+    width: 100%;
+}
+
+#cert-design-field-settings:after {
+}
+
+#cert-field-options {
+}
+
+#cert-field-options > h3 {
+    margin: 0;
+    padding: 10px;
+    background: #F5F5F5;
+    border: 1px solid #DDD;
+    font-weight: normal;
+}
+
+#cert-field-options > h3 > span {
+    vertical-align: middle;
+    color: #666;
+}
+
+#cert-field-options > ul {
+    margin: 0 0 0 0;
+    border: 1px solid #DDD;
+    padding: 10px;
+    border-top: none;
+}
+
+#learn-press-close-settings-panel {
+}
+
+#cert-field-options > ul > li {
+    margin-bottom: 10px;
+}
+
+#cert-field-options > ul > li > label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#cert-field-options > ul > li input[type="text"] {
+    width: 100%;
+}
+
+.cert-option-slider-value {
+    width: 70px;
+    float: right;
+    margin-top: 4px;
+}
+
+.cert-option-slider {
+    background-color: #F1F1F1;
+    height: 5px;
+    margin: 20px 90px 20px 7px;
+    position: relative;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.cert-option-slider .ui-slider-handle {
+    left: 0%;
+    display: block;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    margin-top: -5px;
+    position: absolute;
+    background-color: #0085BA;
+    margin-left: -7px;
+    border: 5px solid #52C9F9;
+}
+
+.cert-option-slider:hover {
+}
+
+.cert-option-slider:hover .ui-slider-handle {
+    background-color: rgb(0, 162, 239);
+}
+
+.cert-ajaxload .dashicons-admin-generic {
+    -webkit-animation: cert-ajaxload 1s infinite linear;
+    -moz-animation: cert-ajaxload 1s infinite linear;
+    -o-animation: cert-ajaxload 1s infinite linear;
+}
+
+#meta-box-tab-learn-press-certs-meta-box {
+    ul {
+        margin: 0px -5px;
+        li {
+            width: 25%;
+            float: left;
+            img {
+                max-width: 100%;
+            }
+            .cert-wrap {
+                padding: 20px 20px;
+                background: #FFF;
+                border: 1px solid #DDD;
+                margin: 5px;
+                cursor: pointer;
+                position: relative;
+            }
+            .cert-name {
+                overflow: hidden;
+                margin: 0;
+                text-align: left;
+                font-weight: bold;
+                padding: 5px 0;
+                position: relative;
+                > span {
+                    height: 40px;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                }
+                .buttons {
+                    float: right;
+                    .button {
+                        margin-left: 5px;
+                        font-weight: normal;
+                        outline: none;
+                        box-shadow: none;
+                    }
+                }
+                .dashicons-yes {
+                    color: #0085BA;
+                    font-size: 40px;
+                    width: 40px;
+                    height: 40px;
+                    visibility: hidden;
+                    margin-top: -5px;
+                    display: inline-block;
+                    margin-bottom: -5px;
+                }
+
+            }
+            &.selected {
+                .cert-name .dashicons-yes {
+                    visibility: visible;
+                }
+                .overlay:before {
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    background: #a6e6ff;
+                    opacity: 0.2;
+                    width: 100%;
+                    height: 100%;
+                    content: '';
+                }
+                .button-select-cert {
+                    color: #00a0d2;
+                }
+                .button-select-cert:after {
+                    content: "\f147";
+                    font-family: dashicons;
+                    font-size: 24px;
+                    vertical-align: top;
+                    margin-right: -4px;
+                    margin-top: -4px;
+                }
+                .button-select-cert:hover,
+                .button-select-cert.remove {
+                    color: #FF0000;
+                }
+                .button-select-cert:hover:after,
+                .button-select-cert.remove:after {
+                    content: '\f335';
+                }
+            }
+        }
+        &:after {
+            clear: both;
+            display: block;
+            content: '';
+        }
+        .learn-press-cert-checkbox {
+            display: none;
+        }
+    }
+}
+
+.overlay {
+    pointer-events: none;
+}
+
+.cert-design-line {
+    position: absolute;
+    z-index: 100;
+    display: none;
+}
+
+.cert-design-line.horizontal {
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-top: 1px dashed #d54e21;
+    top: 0;
+    margin-top: 30px;
+}
+
+.cert-design-line.vertical {
+    top: 0;
+    bottom: 0;
+    border-left: 1px dashed #d54e21;
+    left: 0;
+    margin-left: 30px;
+}
+
+.cert-design-delete-layer {
+    position: absolute;
+    cursor: pointer;
+    font-size: 24px;
+    color: #FF0000;
+}
+
+#cert-design-viewport {
+    margin: 30px;
+    position: relative;
+}
+
+#cert-rulers {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.cert-ruler-vertical, .cert-ruler-horizontal {
+    position: absolute;
+    background: #d1e5ef;
+}
+
+.cert-ruler-vertical {
+    width: 30px;
+    top: 30px;
+    bottom: 30px;
+}
+
+.cert-ruler-horizontal {
+    height: 30px;
+    left: 30px;
+    right: 30px;
+}
+
+#cert-rulers * {
+    pointer-events: none;
+}
+
+.ruler-magnitude {
+    position: absolute;
+    display: inline-block;
+    font-size: 10px;
+    font-weight: bold;
+    color: #00a0d2;
+}
+
+.ruler-magnitude.horizontal {
+    width: 30px;
+    text-align: center;
+    margin-left: -15px;
+    padding-top: 10px;
+}
+
+.ruler-magnitude.vertical {
+    /*height: 15px;
+    line-height: 15px;
+    margin-top: -7px;
+    padding-left: 13px;
+    left:0;
+    position: absolute;*/
+    height: 30px;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    width: 30px;
+    padding-top: 0px;
+}
+
+.ruler-magnitude.horizontal.twenty-five {
+    left: 25%;
+}
+
+.ruler-magnitude.horizontal.fifty {
+    left: 50%;
+}
+
+.ruler-magnitude.horizontal.seventy-five {
+    left: 75%;
+}
+
+.ruler-magnitude:after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+}
+
+.ruler-magnitude.horizontal:after {
+    height: 10px;
+    border-left: 1px solid #00a0d2;
+    top: 0;
+    left: 15px;
+}
+
+.ruler-magnitude.vertical:after {
+    width: 10px;
+    border-top: 1px solid #00a0d2;
+    left: 0;
+}
+
+.ruler-magnitude.vertical.twenty-five {
+    top: 25%;
+}
+
+.ruler-magnitude.vertical.fifty {
+    top: 50%;
+}
+
+.ruler-magnitude.vertical.seventy-five {
+    top: 75%;
+}
+
+.cert-ruler-horizontal.bottom {
+    bottom: 0;
+}
+
+.cert-ruler-vertical.right {
+    right: 0;
+}
+
+.cert-ruler-vertical.right .ruler-magnitude:after {
+    right: 0;
+    left: auto;
+}
+
+.cert-ruler-horizontal.bottom .ruler-magnitude:after {
+    bottom: 0;
+    top: auto;
+}
+
+.cert-ruler-horizontal.bottom .ruler-magnitude {
+    padding-top: 0;
+    height: 30px;
+}
+
+.column-certificate {
+    width: 70px;
+}
+
+.column-certificate .course-cert-preview img {
+    max-width: 100%;
+}
+
+@-webkit-keyframes cert-ajaxload {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes cert-ajaxload {
+    from {
+        -moz-transform: rotate(0deg);
+    }
+    to {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@-o-keyframes cert-ajaxload {
+    from {
+        -o-transform: rotate(0deg);
+    }
+    to {
+        -o-transform: rotate(360deg);
+    }
+}
+
+@media screen and (max-width: 1380px) {
+    #meta-box-tab-learn-press-certs-meta-box ul li {
+        width: 33.3333%;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+
+    #meta-box-tab-learn-press-certs-meta-box ul li {
+        width: 50%;
+    }
+
+    #learn-press-cert-wrap {
+        margin-right: 0;
+    }
+
+    #cert-design-tools, #cert-design-field-settings {
+        float: none;
+        margin: 20px;
+        width: auto;
+        clear: both;
+    }
+}
+
+/*
+.cert-ajaxload .dashicons-admin-generic{
+	animation-name: cert-ajaxload;
+	animation-duration: 1s;
+	animation-timing-function: ease-out;
+	animation-delay: 0s;
+	animation-direction: alternate;
+	animation-iteration-count: infinite;
+	animation-fill-mode: none;
+	animation-play-state: running;
+
+}
+
+@keyframes cert-ajaxload {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}*/

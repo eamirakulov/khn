@@ -1,0 +1,1 @@
+<input type="text" name="<?php echo $field['name']; ?>" value="<?php echo esc_attr( $field['std'] ); ?>" />

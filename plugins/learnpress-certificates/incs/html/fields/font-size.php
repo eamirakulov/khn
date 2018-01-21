@@ -1,0 +1,1 @@
+<input name="fontSize" value="<?php echo esc_attr( $field['std'] ); ?>">

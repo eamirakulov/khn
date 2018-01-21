@@ -1,0 +1,329 @@
+.cert-designer {
+
+}
+
+.cert-designer .cert-editor {
+	margin-right: 160px;
+	position: relative;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	overflow: hidden;
+}
+
+.cert-designer .cert-editor img {
+	max-width: 100%;
+	vertical-align: top;
+	position: relative;
+	z-index: 0;
+}
+
+.cert-designer .cert-fields {
+	width: 140px;
+	float: right;
+	margin: 20px 0;
+	padding: 0;
+}
+
+.cert-designer .cert-fields > ul {
+	margin: 0 -5px;
+}
+
+.cert-designer .cert-fields > ul > li {
+	margin-bottom: 10px;
+}
+
+.cert-designer .cert-fields > ul > li > h4 {
+	border: 1px solid #DDD;
+	background-color: #F5F5F5;
+	border-radius: 3px;
+	padding: 10px;
+	margin: 0 5px;
+	cursor: move;
+}
+
+.clearfix:after {
+	content: '';
+	clear: both;
+	display: block;
+}
+
+.cert-editor .cert-layer-position {
+	position: absolute;
+	z-index: 9999999;
+	background-color: #FFF;
+	padding: 5px;
+	border-radius: 3px;
+	font-size: 12px;
+}
+
+.cert-editor .cert-line {
+	z-index: 999;
+	position: absolute;
+	border: none;
+	display: none;
+}
+
+.cert-editor .cert-line.vertical {
+	top: 0;
+	bottom: 0;
+	border-left: 1px dashed #FF0000;
+}
+
+.cert-editor .cert-line.horizontal {
+	left: 0;
+	right: 0;
+	border-top: 1px dashed #FF0000;
+}
+
+.cert-editor .canvas-container {
+	position: absolute !important;
+	top: 0;
+	z-index: 10;
+}
+
+.cert-object-controls {
+	position: absolute;
+	display: none;
+	z-index: 999999;
+}
+
+.cert-object-controls > a {
+	display: inline-block;
+	font-size: 20px;
+	color: #FFFFFF;
+	border-radius: 4px;
+	line-height: 30px;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	background-color: #333;
+	opacity: 0.7;
+	box-shadow: none;
+}
+
+.cert-object-controls > a:hover {
+	opacity: 1;
+}
+
+.cert-layer-options {
+	position: fixed;
+	z-index: 999999;
+	background-color: #FFF;
+	border: 1px solid #DDD;
+	display: none;
+	top: 32px;
+	bottom: 0;
+	right: 0;
+}
+
+.cert-layer-options h3 {
+	border-bottom: 1px solid #DDD;
+}
+
+.cert-layer-options h3 a {
+	float: right;
+}
+
+.cert-layer-options .cert-options {
+	/* margin: 10px; */
+	overflow: auto;
+	/* height: 100%; */
+	position: absolute;
+	top: 36px;
+	bottom: 48px;
+	left: 0;
+	right: 0;
+	padding: 20px;
+}
+
+.cert-layer-options .cert-options-cmd {
+	position: absolute;
+	bottom: 0;
+	padding: 10px 20px;
+	height: 28px;
+	border-top: 1px solid #DDD;
+	left: 0;
+	right: 0;
+	background-color: #F5F5F5;
+}
+
+.cert-layer-options .cert-options.loading {
+	height: 80px;
+	background-image: url(../images/ajaxload-2.gif);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.cert-layer-options .cert-options li {
+	margin-bottom: 20px;
+}
+
+.cert-layer-options .cert-options li label {
+	font-weight: bold;
+	display: block;
+	margin-bottom: 5px;
+}
+
+.cert-layer-options .cert-options input[type="text"] {
+	width: 100%;
+}
+
+.cert-option-slider-value {
+	width: 70px;
+	float: right;
+	margin-top: 4px;
+}
+
+.cert-option-slider {
+	background-color: #F1F1F1;
+	height: 5px;
+	margin: 20px 0;
+	position: relative;
+	margin-left: 7px;
+	margin-right: 90px;
+}
+
+.cert-option-slider .ui-slider-handle {
+	left: 0%;
+	display: block;
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+	margin-top: -5px;
+	position: absolute;
+	background-color: rgb(0, 115, 170);
+	margin-left: -7px;
+}
+
+.cert-option-slider:hover {
+}
+
+.cert-option-slider:hover .ui-slider-handle {
+	background-color: rgb(0, 162, 239);
+}
+
+/* cert selector */
+.cert-selector {
+	border: 1px solid #DDD;
+	max-width: 300px;
+	position: relative;
+}
+
+.cert-selector .cert-preview {
+	height: 250px;
+}
+
+.cert-selector .cert-preview:before {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	content: 'No Certificate';
+	font-size: 36px;
+	text-align: center;
+	line-height: 250px;
+	color: #DDD;
+}
+
+.cert-selector.loading-preview .cert-preview:before {
+	content: 'Loading...'
+}
+
+.cert-selector.has-preview .cert-preview {
+	height: auto;
+}
+
+.cert-selector.has-preview .cert-preview:before {
+	display: none;
+}
+
+.cert-selector img {
+	max-width: 100%;
+	vertical-align: top;
+}
+
+.cert-selector .dashicons {
+	display: block;
+	position: absolute;
+	font-size: 48px;
+	width: 48px;
+	height: 48px;
+	left: 50%;
+	top: 50%;
+	margin-left: -24px;
+	margin-top: -24px;
+	line-height: 48px;
+	text-align: center;
+	text-align: center;
+	display: none;
+}
+
+.cert-selector:hover .dashicons-plus {
+	display: block;
+}
+
+.cert-selector.has-preview:hover .dashicons-trash {
+	display: block;
+}
+
+.cert-selector.has-preview:hover .dashicons-plus {
+	display: none;
+}
+
+.cert-list-preview {
+	position: fixed;
+	top: 0px;
+	left: 0;
+	right: 0;
+	z-index: 99999;
+	background-color: #FFF;
+	bottom: 0;
+	border: 1px solid #DDD;
+	display: none;
+	opacity: 0;
+}
+
+.cert-list-preview > h3 {
+	padding: 10px;
+	margin: 0;
+	border-bottom: 1px solid #DDD;
+	overflow: hidden;
+	line-height: 28px !important;
+}
+
+.cert-list-preview > h3 button {
+	float: right;
+	margin-left: 5px !important;
+}
+
+.cert-list-preview .cert-list {
+	position: absolute;
+	top: 45px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 20px;
+	overflow: auto;
+}
+
+.cert-list-preview ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.cert-list-preview ul li {
+	float: left;
+	width: 25%;
+}
+
+.cert-list-preview ul li .preview {
+	margin: 10px;
+	float: none;
+}
+
+.cert-list-preview ul li.selected .preview {
+	outline: 1px solid #DDD;
+}

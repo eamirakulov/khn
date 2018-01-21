@@ -1,0 +1,171 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Package Name\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-09-07 10:29+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: learnpress-course-review.php:110
+msgid "Please enter the review title"
+msgstr ""
+
+#: learnpress-course-review.php:111
+msgid "Please enter the review content"
+msgstr ""
+
+#: learnpress-course-review.php:112
+msgid "Please select your rating"
+msgstr ""
+
+#: learnpress-course-review.php:139
+msgid "Error"
+msgstr ""
+
+#: learnpress-course-review.php:144
+msgid "Invalid course"
+msgstr ""
+
+#: learnpress-course-review.php:166
+msgid "Course review"
+msgstr ""
+
+#: learnpress-course-review.php:190
+msgid "Filter by post type"
+msgstr ""
+
+#: learnpress-course-review.php:194
+msgid "All post type"
+msgstr ""
+
+#: learnpress-course-review.php:195
+msgid "Course comments"
+msgstr ""
+
+#: learnpress-course-review.php:260 templates/course-review.php:11
+#: templates/shortcode-course-review.php:13
+msgid "Reviews"
+msgstr ""
+
+#: learnpress-course-review.php:279
+#, php-format
+msgid ""
+"<strong>Course Review</strong> addon version %s requires <strong>LearnPress</"
+"strong> version %s or higher"
+msgstr ""
+
+#: incs/review-widgets.php:16
+msgid "Course Review"
+msgstr ""
+
+#: incs/review-widgets.php:17
+msgid "Display ratings and reviews of course"
+msgstr ""
+
+#: incs/review-widgets.php:63
+msgid "New title"
+msgstr ""
+
+#: incs/review-widgets.php:69
+msgid "Title:"
+msgstr ""
+
+#: incs/review-widgets.php:75
+msgid "Course Id:"
+msgstr ""
+
+#: incs/review-widgets.php:81
+msgid "Show Rate:"
+msgstr ""
+
+#: incs/review-widgets.php:87
+msgid "Show Review:"
+msgstr ""
+
+#: templates/course-rate.php:18
+#, php-format
+msgid " %1.2f average based on "
+msgstr ""
+
+#: templates/course-rate.php:19
+#, php-format
+msgid " %d rating"
+msgid_plural "%d ratings"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/course-rate.php:29
+msgid " Star"
+msgstr ""
+
+#: templates/course-review.php:19 templates/shortcode-course-review.php:22
+msgid "Loading..."
+msgstr ""
+
+#: templates/course-review.php:22 templates/shortcode-course-review.php:25
+msgid "No review to load"
+msgstr ""
+
+#: templates/course-review.php:25 templates/shortcode-course-review.php:28
+msgid "Load More"
+msgstr ""
+
+#: templates/review-form.php:13 templates/review-form.php:19
+msgid "Write a review"
+msgstr ""
+
+#: templates/review-form.php:25
+msgid "Title"
+msgstr ""
+
+#: templates/review-form.php:29
+msgid "Content"
+msgstr ""
+
+#: templates/review-form.php:33
+msgid "Rating"
+msgstr ""
+
+#: templates/review-form.php:43
+msgid "Add review"
+msgstr ""
+
+#: templates/review-form.php:44
+msgid "Cancel"
+msgstr ""
+
+#: templates/review-form.php:45
+msgid "Please wait..."
+msgstr ""
+
+#: templates/shortcode-course-rate.php:12
+#, php-format
+msgid "%d rating"
+msgid_plural "%d ratings"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/shortcode-course-rate.php:25
+msgid "Star"
+msgstr ""
+
+#: templates/shortcode-course-rate.php:26
+msgid "Rate"
+msgstr ""
+
+#: templates/shortcode-course-review.php:14
+#, php-format
+msgid "Average rate: <span>%.1f</span>"
+msgstr ""

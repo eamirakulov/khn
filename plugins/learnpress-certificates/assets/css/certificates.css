@@ -1,0 +1,209 @@
+.learn-press-cert-preview {
+	font-family: 'Open Sans';
+}
+
+.learn-press-cert-preview a {
+	text-decoration: none;
+	color: #666;
+}
+
+.learn-press-cert-preview a:hover {
+	text-decoration: underline;
+}
+
+.learn-press-user-profile-certs {
+	margin: 0 -10px;
+	padding: 0;
+	list-style: none;
+}
+
+.learn-press-user-profile-certs:after {
+	display: block;
+	content: '';
+	clear: both;
+}
+
+.learn-press-user-profile-certs li {
+	float: left;
+	width: 50%;
+}
+
+.learn-press-user-profile-certs li a.permalink {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	border: none;
+	outline: none;
+	background: #FFF;
+	opacity: 0;
+}
+
+.learn-press-user-profile-certs li a.permalink:hover {
+	opacity: 0.3;
+}
+
+.learn-press-user-profile-certs li .inside {
+	margin: 0 10px;
+}
+
+.learn-press-user-profile-certs li .inside img {
+	max-width: 100%;
+	height: auto;
+}
+
+.learn-press-user-profile-certs li .inside h4 {
+	font-size: 14px;
+	margin: 5px 0;
+	text-align: center;
+}
+
+.learn-press-user-profile-certs li .inside h4 .course-cert {
+	font-size: smaller;
+	font-style: italic;
+}
+
+.learn-press-user-profile-certs li .inside h4 p {
+	margin-bottom: 5px;
+}
+
+#learn-press-cert-wrap {
+	max-width: 1140px;
+	width: 80%;
+	margin: 0 auto;
+	padding: 40px 0;
+}
+
+.cert-design-viewport {
+	position: relative;
+}
+
+.cert-design-viewport img {
+	width: 100%;
+	height: auto;
+	_position: absolute;
+	top: 0;
+}
+
+.cert-design-actions {
+	text-align: center;
+	margin: 20px 0;
+	position: relative;
+}
+
+.cert-design-actions.loading > * {
+	display: none;
+}
+
+.cert-design-actions.loading:after {
+	content: attr(data-downloading);
+	display: inline-block;
+}
+
+.socials-sharing {
+	display: block;
+	position: relative;
+	text-align: center;
+}
+
+.socials-sharing ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+}
+
+.socials-sharing ul li {
+	display: inline-block;
+	vertical-align: middle;
+	height: 22px;
+}
+
+.socials-sharing li .fb-like > span{
+	vertical-align: top!important;
+}
+
+.socials-sharing ul li a {
+
+}
+
+.socials-sharing ul li a:hover {
+	background: #4ABEFF;
+}
+
+.socials-sharing:hover ul {
+}
+
+.learn-press-cert-preview.popup {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 999999;
+	overflow: auto;
+	display: none;
+}
+
+.learn-press-cert-preview.popup .learn-press-message {
+	margin-top: 0;
+}
+
+.learn-press-cert-preview.popup iframe {
+	width: 100%;
+	border: none;
+}
+
+.learn-press-cert-preview.popup:before {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	opacity: 0.9;
+	content: '';
+}
+
+.learn-press-cert-preview.popup a,
+.learn-press-cert-preview.popup {
+}
+
+.learn-press-cert-preview .cert-design-viewport {
+	margin-top: 30px;
+}
+
+.learn-press-cert-preview.popup #learn-press-cert-wrap {
+	background: #FFF;
+	position: absolute;
+	padding: 20px 20px 1px 20px;
+	top: 20px;
+	bottom: 20px;
+	left: 10%;
+	right: 10%;
+	overflow: hidden;
+}
+
+.learn-press-cert-preview.popup .close {
+	float: right;
+	color: #FF0000;
+}
+
+.learn-press-cert-preview.popup .lp-iframe-wrap {
+	overflow: auto;
+}
+
+#learn-press-form-download-cert {
+	opacity: 0;
+	height: 0;
+	position: absolute;
+}
+
+.cert-design-viewport .canvas-container {
+	position: absolute;
+	top: 0;
+}
+
+.hide-all-content {
+	display: none !important;
+}

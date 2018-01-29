@@ -1,0 +1,197 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Package Name\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-10-24 16:01+0700\n"
+"PO-Revision-Date: 2018-01-28 23:41+0000\n"
+"Last-Translator: admin <emil@amirakulov.com>\n"
+"Language-Team: Russian\n"
+"Language: ru-RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && "
+"n%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2)\n"
+"X-Generator: Loco - https://localise.biz/"
+
+#: learnpress-gradebook.php:76 inc/class-gradebook-export.php:437
+msgid "User ID"
+msgstr "ID"
+
+#: learnpress-gradebook.php:77 inc/class-gradebook-export.php:438
+msgid "User login"
+msgstr "Логин"
+
+#: learnpress-gradebook.php:78 inc/class-gradebook-export.php:439
+msgid "User email"
+msgstr "E-Mail"
+
+#: learnpress-gradebook.php:79 inc/class-gradebook-export.php:440
+msgid "User display name"
+msgstr "Имя"
+
+#: learnpress-gradebook.php:114 inc/class-gradebook-export.php:391
+msgid "Viewed"
+msgstr "Просмотрено"
+
+#: learnpress-gradebook.php:117 learnpress-gradebook.php:138
+#: inc/class-gradebook-export.php:394
+#: inc/admin/class-gradebook-list-table.php:254
+#: inc/admin/class-gradebook-list-table.php:256 inc/admin/gradebook.php:32
+msgid "Completed"
+msgstr "Окончено"
+
+#: learnpress-gradebook.php:120 inc/class-gradebook-export.php:397
+#: inc/class-gradebook-export.php:416 templates/profile/gradebook.php:39
+#: templates/profile/gradebook.php:97
+msgid "Passed"
+msgstr "Пройдено"
+
+#: learnpress-gradebook.php:123 inc/class-gradebook-export.php:400
+#: inc/class-gradebook-export.php:419 templates/profile/gradebook.php:42
+#: templates/profile/gradebook.php:99
+msgid "Failed"
+msgstr "Провалено"
+
+#: learnpress-gradebook.php:138 inc/class-gradebook-export.php:422
+#: inc/admin/class-gradebook-list-table.php:245
+#: inc/admin/class-gradebook-list-table.php:254
+#: inc/admin/class-gradebook-list-table.php:256
+#: templates/profile/gradebook.php:35
+msgid "In Progress"
+msgstr "В процессе"
+
+#: learnpress-gradebook.php:143 inc/class-gradebook-export.php:445
+#: inc/admin/class-gradebook-list-table.php:114
+#: inc/admin/class-gradebook-list-table.php:118
+msgid "Average"
+msgstr "Средний"
+
+#: learnpress-gradebook.php:144 inc/class-gradebook-export.php:447
+#: inc/admin/class-gradebook-list-table.php:141
+#: inc/admin/views/gradebook-details.php:13 templates/profile/gradebook.php:60
+msgid "Status"
+msgstr "Статус"
+
+#: learnpress-gradebook.php:206 learnpress-gradebook.php:310
+#: inc/admin/class-gradebook-list-table.php:73
+#: inc/admin/class-gradebook-list-table.php:74 inc/admin/gradebook.php:2
+msgid "Gradebook"
+msgstr "Дневник"
+
+#: learnpress-gradebook.php:269
+msgid "Course Gradebook"
+msgstr "Дневник по курсу"
+
+#: learnpress-gradebook.php:280
+msgid "Number of items per page"
+msgstr "Кол-во на стр"
+
+#: learnpress-gradebook.php:332
+msgid "View"
+msgstr "Показать"
+
+#: learnpress-gradebook.php:341
+#, php-format
+msgid ""
+"<strong>Gradebook</strong> addon version %s requires LearnPress version %s "
+"or higher"
+msgstr ""
+
+#: inc/class-gradebook-export.php:425
+msgid "False"
+msgstr ""
+
+#: inc/class-gradebook-export.php:446
+#: inc/admin/class-gradebook-list-table.php:140
+msgid "Enrolled"
+msgstr ""
+
+#: inc/admin/class-gradebook-list-table.php:105
+#: inc/admin/class-gradebook-list-table.php:173
+msgid "Student"
+msgstr ""
+
+#: inc/admin/class-gradebook-list-table.php:122
+msgid "Average (Final)"
+msgstr ""
+
+#: inc/admin/class-gradebook-list-table.php:130
+msgid "Final"
+msgstr ""
+
+#: inc/admin/class-gradebook-list-table.php:174
+msgid "username, email, display name, etc..."
+msgstr ""
+
+#: inc/admin/class-gradebook-list-table.php:175
+msgid "From"
+msgstr ""
+
+#: inc/admin/class-gradebook-list-table.php:177
+msgid "To"
+msgstr ""
+
+#: inc/admin/class-gradebook-list-table.php:207
+msgid "Details"
+msgstr ""
+
+#: inc/admin/class-gradebook-list-table.php:245
+msgid "Finished"
+msgstr ""
+
+#: inc/admin/gradebook.php:5
+msgid "Error"
+msgstr ""
+
+#: inc/admin/gradebook.php:32
+msgid "processing"
+msgstr ""
+
+#: inc/admin/gradebook.php:35
+msgid "Export to CSV"
+msgstr ""
+
+#: inc/admin/views/gradebook-details.php:11 templates/profile/gradebook.php:58
+msgid "Title"
+msgstr ""
+
+#: inc/admin/views/gradebook-details.php:12 templates/profile/gradebook.php:59
+msgid "Type"
+msgstr ""
+
+#: inc/admin/views/gradebook-details.php:28 templates/profile/gradebook.php:73
+msgid "lesson"
+msgstr ""
+
+#: inc/admin/views/gradebook-details.php:30 templates/profile/gradebook.php:75
+msgid "quiz"
+msgstr ""
+
+#: templates/profile/gradebook.php:16
+msgid "Course"
+msgstr "Курс"
+
+#: templates/profile/gradebook.php:17
+msgid "Results"
+msgstr "Результаты"
+
+#: templates/profile/gradebook.php:18
+msgid "Action"
+msgstr "Действия"
+
+#: templates/profile/gradebook.php:51
+msgid "Show/Hide"
+msgstr "Показать/скрыть"
+
+#: templates/profile/gradebook.php:61
+msgid "Result"
+msgstr "Результат"
+
+#: templates/profile/gradebook.php:81
+msgid "viewed"
+msgstr ""
+
+#: templates/profile/gradebook.php:83
+msgid "completed"
+msgstr ""

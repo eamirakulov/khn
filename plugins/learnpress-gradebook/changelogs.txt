@@ -1,0 +1,23 @@
+= 2.1.7 =
+~ Fixed: export gradebook to empty file.
+
+= 2.1.6 =
+~ Fixed: export gradebook not correct.
+~ Fixed: Result of course in user profile display not correct.
+~ Fixed: Status of course in user profile display not correct.
++ Add pagination for gradebook page in admin.
+
+= 2.1.5 =
+~ update language file
+
+= 2.1.3 =
+~ plugin not load language file
+
+= 2.1.2 =
+~ change text domain to learnpress-gradebook
+
+= 2.0.1 =
+~ Fixed bug: mysql querry error "Error Code: 1267. Illegal mix of collations..."
+
+= 2.0.1 =
++ Changed text domain to learnpress

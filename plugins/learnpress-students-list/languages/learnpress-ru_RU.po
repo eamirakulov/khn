@@ -1,0 +1,109 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: LearnPress - Students List\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-01-29 00:19+0000\n"
+"PO-Revision-Date: 2018-01-29 00:19+0000\n"
+"Last-Translator: admin <emil@amirakulov.com>\n"
+"Language-Team: \n"
+"Language: ru_RU\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && "
+"n%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/"
+
+#: learnpress-students-list.php:80
+msgid "Students"
+msgstr ""
+
+#: learnpress-students-list.php:103
+msgid "Show students list"
+msgstr ""
+
+#: learnpress-students-list.php:106
+msgid "Option to hide the students list in each individual course."
+msgstr ""
+
+#: learnpress-students-list.php:130
+#, php-format
+msgid ""
+"<strong>Students List</strong> addon version %s requires <strong>"
+"LearnPress</strong> version %s or higher"
+msgstr ""
+
+#: inc/shortcodes.php:48 inc/widgets.php:60
+msgid "Please enter Course ID."
+msgstr ""
+
+#: inc/shortcodes.php:52 templates/list-students.php:92
+msgid "Course ID invalid, please check it again."
+msgstr ""
+
+#: inc/widgets.php:25
+msgid "Display students list of course."
+msgstr ""
+
+#: inc/widgets.php:75
+msgid "Students List"
+msgstr ""
+
+#: inc/widgets.php:81
+msgid "Title:"
+msgstr ""
+
+#: inc/widgets.php:85
+msgid "Course ID:"
+msgstr ""
+
+#: inc/widgets.php:89
+msgid "Number students to show:"
+msgstr ""
+
+#: inc/widgets.php:93
+msgid "Filter:"
+msgstr ""
+
+#: templates/list-students.php:63
+#, php-format
+msgid "Passing condition: %s%%"
+msgstr ""
+
+#: templates/list-students.php:77
+#, php-format
+msgid "one student enrolled."
+msgid_plural "%s students enrolled."
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/list-students.php:83
+#, php-format
+msgid "One student enrolled."
+msgid_plural "%s students enrolled."
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/list-students.php:85
+msgid "No student enrolled."
+msgstr ""
+
+#. Name of the plugin
+msgid "LearnPress - Students List"
+msgstr ""
+
+#. Description of the plugin
+msgid "Get students list by filters."
+msgstr ""
+
+#. URI of the plugin
+msgid "http://thimpress.com/learnpress"
+msgstr ""
+
+#. Author of the plugin
+msgid "ThimPress"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "http://thimpress.com"
+msgstr ""

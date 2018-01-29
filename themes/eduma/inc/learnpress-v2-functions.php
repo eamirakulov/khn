@@ -1095,7 +1095,7 @@ function thim_tab_profile_filter_title( $tab_title, $key ) {
 			$tab_title = '<i class="fa fa-heart-o"></i><span class="text">' . esc_html__( 'Wishlist', 'eduma' ) . '</span>';
 			break;
 		case 'gradebook':
-			$tab_title = '<i class="fa fa-book"></i><span class="text">' . esc_html__( 'Gradebook', 'eduma' ) . '</span>';
+			$tab_title = '<i class="fa fa-book"></i><span class="text">' . esc_html__( 'Дневник', 'eduma' ) . '</span>';
 			break;
 		case 'settings':
 			$tab_title = '<i class="fa fa-cog"></i><span class="text">' . esc_html__( 'Settings', 'eduma' ) . '</span>';
@@ -1429,7 +1429,7 @@ if( !function_exists('show_pass_text') ) {
 		$course = LP()->global['course'];
 		$grade = $user->get_course_grade( $course->id );
 		if($grade == 'passed')
-			echo '<div class="message message-success learn-press-success">' . ( __( 'You have finished this course.', 'eduma' ) ) . '</div>';
+			echo '<div class="message message-success learn-press-success">' . ( __( 'Вы окончили этот курс.', 'eduma' ) ) . '</div>';
 	}
 }
 add_action( 'thim_begin_curriculum_button', 'show_pass_text', 90 );

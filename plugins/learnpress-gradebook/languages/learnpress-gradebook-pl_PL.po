@@ -1,0 +1,214 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: LearnPress - Gradebook 2.1.2\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/learnpress-"
+"gradebook\n"
+"POT-Creation-Date: 2017-08-23 07:10:21+00:00\n"
+"PO-Revision-Date: 2017-10-12 15:57+0000\n"
+"Last-Translator: admin <phonglq@foobla.com>\n"
+"Language-Team: Polish (Poland)\n"
+"Language: pl-PL\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Loco-Source-Locale: pl_PL\n"
+"X-Generator: Loco - https://localise.biz/\n"
+"X-Loco-Parser: loco_parse_po"
+
+#: inc/admin/class-gradebook-list-table.php:73 
+#: inc/admin/class-gradebook-list-table.php:74 inc/admin/gradebook.php:2 
+#: learnpress-gradebook.php:151 learnpress-gradebook.php:251
+msgid "Gradebook"
+msgstr ""
+"Wyniki\n"
+
+#: inc/admin/class-gradebook-list-table.php:105 
+#: inc/admin/class-gradebook-list-table.php:168
+msgid "Student"
+msgstr "Uczeń"
+
+#: inc/admin/class-gradebook-list-table.php:114 learnpress-gradebook.php:86
+msgid "Average"
+msgstr "Srednia"
+
+#: inc/admin/class-gradebook-list-table.php:118
+msgid "Average (Final)"
+msgstr "Średnia (Końcowa)"
+
+#: inc/admin/class-gradebook-list-table.php:125
+msgid "Final"
+msgstr "Końcowe"
+
+#: inc/admin/class-gradebook-list-table.php:135
+msgid "Enrolled"
+msgstr "Przystąpiło"
+
+#: inc/admin/class-gradebook-list-table.php:136 
+#: inc/admin/views/gradebook-details.php:13 learnpress-gradebook.php:87 
+#: templates/profile/gradebook.php:60
+msgid "Status"
+msgstr "Status"
+
+#: inc/admin/class-gradebook-list-table.php:169
+msgid "username, email, display name, etc..."
+msgstr "nick, email itd..."
+
+#: inc/admin/class-gradebook-list-table.php:170
+msgid "From"
+msgstr "Od"
+
+#: inc/admin/class-gradebook-list-table.php:172
+msgid "To"
+msgstr "Do"
+
+#: inc/admin/class-gradebook-list-table.php:202
+msgid "Details"
+msgstr "Szczegóły"
+
+#: inc/admin/class-gradebook-list-table.php:217 
+#: inc/admin/class-gradebook-list-table.php:243 
+#: inc/admin/class-gradebook-list-table.php:245 learnpress-gradebook.php:108 
+#: learnpress-gradebook.php:118
+msgid "Completed"
+msgstr "Zakonczony"
+
+#: inc/admin/class-gradebook-list-table.php:217 
+#: inc/admin/class-gradebook-list-table.php:234 
+#: inc/admin/class-gradebook-list-table.php:243 
+#: inc/admin/class-gradebook-list-table.php:245 learnpress-gradebook.php:108 
+#: learnpress-gradebook.php:118 templates/profile/gradebook.php:35
+msgid "In Progress"
+msgstr "W trakcie"
+
+#: inc/admin/class-gradebook-list-table.php:221
+msgid "Not started"
+msgstr "Nie rozpoczęte"
+
+#: inc/admin/class-gradebook-list-table.php:234
+msgid "Finished"
+msgstr "Ukończony"
+
+#: inc/admin/gradebook.php:5
+msgid "Error"
+msgstr "Błąd"
+
+#: inc/admin/gradebook.php:34
+msgid "Export to CSV"
+msgstr "Eksportuj do CSV"
+
+#: inc/admin/views/gradebook-details.php:11 templates/profile/gradebook.php:58
+msgid "Title"
+msgstr "Tytuł"
+
+#: inc/admin/views/gradebook-details.php:12 templates/profile/gradebook.php:59
+msgid "Type"
+msgstr "Typ"
+
+#: inc/admin/views/gradebook-details.php:28 templates/profile/gradebook.php:73
+msgid "lesson"
+msgstr "prezentacja"
+
+#: inc/admin/views/gradebook-details.php:30 templates/profile/gradebook.php:75
+msgid "quiz"
+msgstr "test"
+
+#: learnpress-gradebook.php:73
+msgid "User ID"
+msgstr "ID uzytkownika"
+
+#: learnpress-gradebook.php:74
+msgid "User login"
+msgstr "Login uzytkownika"
+
+#: learnpress-gradebook.php:75
+msgid "User email"
+msgstr "Email uzytkownika"
+
+#: learnpress-gradebook.php:76
+msgid "User display name"
+msgstr "Wyswietlana nazwa uzytkownika"
+
+#: learnpress-gradebook.php:82
+msgid "%s (Final)"
+msgstr "%s (kokńcowe)"
+
+#: learnpress-gradebook.php:105
+msgid "%s Completed"
+msgstr "%s ukończono"
+
+#: learnpress-gradebook.php:105
+msgid "%s In Progress"
+msgstr "%s w trakcie"
+
+#: learnpress-gradebook.php:210
+msgid "Course Gradebook"
+msgstr "Wyniki kursów"
+
+#: learnpress-gradebook.php:221
+msgid "Number of items per page"
+msgstr "Liczba elementów na stronę"
+
+#: learnpress-gradebook.php:272
+msgid "View"
+msgstr "Pokaż"
+
+#: learnpress-gradebook.php:281
+msgid ""
+"<strong>Gradebook</strong> addon version %s requires LearnPress version %s "
+"or higher"
+msgstr ""
+"Dodatek<strong>Wyniki</strong> w wersji %s Wymaga wersji LearnPress %s lub "
+"wyższej"
+
+#: templates/profile/gradebook.php:16
+msgid "Course"
+msgstr "Kurs"
+
+#: templates/profile/gradebook.php:17
+msgid "Results"
+msgstr "Wyniki"
+
+#: templates/profile/gradebook.php:18
+msgid "Action"
+msgstr "Akcja"
+
+#: templates/profile/gradebook.php:39
+msgid "Passed"
+msgstr "Zdane"
+
+#: templates/profile/gradebook.php:42
+msgid "Failed"
+msgstr "Nie zdane"
+
+#: templates/profile/gradebook.php:51
+msgid "Show/Hide"
+msgstr "Pokaż/Ukryj"
+
+#: templates/profile/gradebook.php:61
+msgid "Result"
+msgstr "Wyniki"
+
+#. Plugin Name of the plugin/theme
+msgid "LearnPress - Gradebook"
+msgstr "LearnPress - Wyniki"
+
+#. Plugin URI of the plugin/theme
+msgid "http://thimpress.com/learnpress"
+msgstr "http://thimpress.com/learnpress"
+
+#. Description of the plugin/theme
+msgid "Adding Course Gradebook for LearnPress"
+msgstr "Dodawanie Wyników kursu dla LearnPress"
+
+#. Author of the plugin/theme
+msgid "ThimPress"
+msgstr "ThimPress"
+
+#. Author URI of the plugin/theme
+msgid "http://thimpress.com"
+msgstr "http://thimpress.com"
+
+#. Tags of the plugin/theme
+msgid "learnpress"
+msgstr "learnpress"

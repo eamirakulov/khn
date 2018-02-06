@@ -102,7 +102,7 @@ body {
 }
 
 #wpforms-builder input.wpforms-error{
-	border: 1px solid #ebccd1;
+	border: 1px solid #ebccd1 !important;
 }
 
 #wpforms-builder .wpforms-loading-inline {

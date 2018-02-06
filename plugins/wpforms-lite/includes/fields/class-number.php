@@ -18,7 +18,7 @@ class WPForms_Field_Number extends WPForms_Field {
 	public function init() {
 
 		// Define field type information.
-		$this->name  = __( 'Numbers', 'wpforms' );
+		$this->name  = esc_html__( 'Numbers', 'wpforms' );
 		$this->type  = 'number';
 		$this->icon  = 'fa-hashtag';
 		$this->order = 13;
@@ -149,12 +149,12 @@ class WPForms_Field_Number extends WPForms_Field {
 
 		// Basic required check - If field is marked as required, check for entry data
 		if ( ! empty( $form_data['fields'][ $field_id ]['required'] ) && empty( $field_submit ) && '0' != $field_submit ) {
-			wpforms()->process->errors[ $form_id ][ $field_id ] = apply_filters( 'wpforms_required_label', __( 'This field is required.', 'wpforms' ) );
+			wpforms()->process->errors[ $form_id ][ $field_id ] = wpforms_get_required_label();
 		}
 
 		// Check if value is numeric.
 		if ( ! empty( $field_submit ) && ! is_numeric( $field_submit ) ) {
-			wpforms()->process->errors[ $form_id ][ $field_id ] = apply_filters( 'wpforms_valid_number_label', __( 'Please enter a valid number.', 'wpforms' ) );
+			wpforms()->process->errors[ $form_id ][ $field_id ] = apply_filters( 'wpforms_valid_number_label', esc_html__( 'Please enter a valid number.', 'wpforms' ) );
 		}
 	}
 

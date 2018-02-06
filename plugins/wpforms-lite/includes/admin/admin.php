@@ -84,7 +84,7 @@ function wpforms_admin_scripts() {
 
 	wp_enqueue_media();
 
-	// jQuery confirm
+	// jQuery confirm.
 	wp_enqueue_script(
 		'jquery-confirm',
 		WPFORMS_PLUGIN_URL . 'assets/js/jquery.jquery-confirm.min.js',
@@ -125,58 +125,43 @@ function wpforms_admin_scripts() {
 	);
 
 	$strings = array(
-		'addon_activate'                  => __( 'Activate', 'wpforms' ),
-		'addon_active'                    => __( 'Active', 'wpforms' ),
-		'addon_deactivate'                => __( 'Deactivate', 'wpforms' ),
-		'addon_inactive'                  => __( 'Inactive', 'wpforms' ),
-		'addon_install'                   => __( 'Install Addon', 'wpforms' ),
+		'addon_activate'                  => esc_html__( 'Activate', 'wpforms' ),
+		'addon_active'                    => esc_html__( 'Active', 'wpforms' ),
+		'addon_deactivate'                => esc_html__( 'Deactivate', 'wpforms' ),
+		'addon_inactive'                  => esc_html__( 'Inactive', 'wpforms' ),
+		'addon_install'                   => esc_html__( 'Install Addon', 'wpforms' ),
 		'ajax_url'                        => admin_url( 'admin-ajax.php' ),
-		'cancel'                          => __( 'Cancel', 'wpforms' ),
-		'close'                           => __( 'Close', 'wpforms' ),
-		'entry_delete_confirm'            => __( 'Are you sure you want to delete this entry?', 'wpforms' ),
-		'entry_delete_all_confirm'        => __( 'Are you sure you want to delete ALL entries?', 'wpforms' ),
-		'entry_empty_fields_hide'         => __( 'Hide Empty Fields', 'wpforms' ),
-		'entry_empty_fields_show'         => __( 'Show Empty Fields', 'wpforms' ),
-		'entry_field_columns'             => __( 'Entries Field Columns', 'wpforms' ),
-		'entry_note_delete_confirm'       => __( 'Are you sure you want to delete this note?', 'wpforms' ),
-		'entry_unstar'                    => __( 'Unstar entry', 'wpforms' ),
-		'entry_star'                      => __( 'Star entry', 'wpforms' ),
-		'entry_read'                      => __( 'Mark entry read', 'wpforms' ),
-		'entry_unread'                    => __( 'Mark entry unread', 'wpforms' ),
-		'fields_select'                   => __( 'Select fields', 'wpforms' ),
-		'form_delete_confirm'             => __( 'Are you sure you want to delete this form?', 'wpforms' ),
-		'form_duplicate_confirm'          => __( 'Are you sure you want to duplicate this form?', 'wpforms' ),
-		'heads_up'                        => __( 'Heads up!', 'wpforms' ),
-		'importer_forms_required'         => __( 'Please select at least one form to import.', 'wpforms' ),
+		'cancel'                          => esc_html__( 'Cancel', 'wpforms' ),
+		'close'                           => esc_html__( 'Close', 'wpforms' ),
+		'entry_delete_confirm'            => esc_html__( 'Are you sure you want to delete this entry?', 'wpforms' ),
+		'entry_delete_all_confirm'        => esc_html__( 'Are you sure you want to delete ALL entries?', 'wpforms' ),
+		'entry_empty_fields_hide'         => esc_html__( 'Hide Empty Fields', 'wpforms' ),
+		'entry_empty_fields_show'         => esc_html__( 'Show Empty Fields', 'wpforms' ),
+		'entry_field_columns'             => esc_html__( 'Entries Field Columns', 'wpforms' ),
+		'entry_note_delete_confirm'       => esc_html__( 'Are you sure you want to delete this note?', 'wpforms' ),
+		'entry_unstar'                    => esc_html__( 'Unstar entry', 'wpforms' ),
+		'entry_star'                      => esc_html__( 'Star entry', 'wpforms' ),
+		'entry_read'                      => esc_html__( 'Mark entry read', 'wpforms' ),
+		'entry_unread'                    => esc_html__( 'Mark entry unread', 'wpforms' ),
+		'fields_select'                   => esc_html__( 'Select fields', 'wpforms' ),
+		'form_delete_confirm'             => esc_html__( 'Are you sure you want to delete this form?', 'wpforms' ),
+		'form_duplicate_confirm'          => esc_html__( 'Are you sure you want to duplicate this form?', 'wpforms' ),
+		'heads_up'                        => esc_html__( 'Heads up!', 'wpforms' ),
+		'importer_forms_required'         => esc_html__( 'Please select at least one form to import.', 'wpforms' ),
 		'isPro'                           => wpforms()->pro,
 		'nonce'                           => wp_create_nonce( 'wpforms-admin' ),
-		'ok'                              => __( 'OK', 'wpforms' ),
-		'plugin_install_activate_btn'     => __( 'Install and Activate', 'wpforms' ),
-		'plugin_install_activate_confirm' => __( 'needs to be installed and activated to import its forms. Would you like us to install and activate it for you?', 'wpforms' ),
-		'plugin_activate_btn'             => __( 'Activate', 'wpforms' ),
-		'plugin_activate_confirm'         => __( 'needs to be activated to import its forms. Would you like us to activate it for you?.', 'wpforms' ),
-		'provider_delete_confirm'         => __( 'Are you sure you want to disconnect this account?', 'wpforms' ),
-		'provider_auth_error'             => __( 'Could not authenticate with the provider.', 'wpforms' ),
-		'save_refresh'                    => __( 'Save and Refresh', 'wpforms' ),
-		'upgrade_completed'               => __( 'Upgrade was successfully completed!', 'wpforms' ),
-		'upload_image_title'              => __( 'Upload or Choose Your Image', 'wpforms' ),
-		'upload_image_button'             => __( 'Use Image', 'wpforms' ),
-		/* translators: %1$s - opening link tag; %2$s - closing link tag; %3$s - opening link tag; %4$s - closing link tag. */
-		'upgrade_modal'                   => sprintf(
-												wp_kses(
-													__( '<p>Thanks for your interest in WPForms Pro!<br>If you have any questions or issues just %1$slet us know%2$s.</p><p>After purchasing WPForms Pro, you\'ll need to <strong>download and install the Pro version of the plugin</strong>, and then <strong>remove the free plugin</strong>.<br>(Don\'t worry, all your forms and settings will be preserved.)</p><p>Check out %3$sour documentation%4$s for step-by-step instructions.</p>', 'wpforms' ),
-													array(
-														'br'     => array(),
-														'strong' => array(),
-														'p'      => array(),
-														'a'      => array( 'href', 'rel', 'target' ),
-													)
-												),
-												'<a href="https://wpforms.com/contact/" target="_blank" rel="noopener noreferrer">',
-												'</a>',
-												'<a href="https://wpforms.com/docs/upgrade-wpforms-lite-paid-license/" target="_blank" rel="noopener noreferrer">',
-												'</a>'
-											),
+		'ok'                              => esc_html__( 'OK', 'wpforms' ),
+		'plugin_install_activate_btn'     => esc_html__( 'Install and Activate', 'wpforms' ),
+		'plugin_install_activate_confirm' => esc_html__( 'needs to be installed and activated to import its forms. Would you like us to install and activate it for you?', 'wpforms' ),
+		'plugin_activate_btn'             => esc_html__( 'Activate', 'wpforms' ),
+		'plugin_activate_confirm'         => esc_html__( 'needs to be activated to import its forms. Would you like us to activate it for you?', 'wpforms' ),
+		'provider_delete_confirm'         => esc_html__( 'Are you sure you want to disconnect this account?', 'wpforms' ),
+		'provider_auth_error'             => esc_html__( 'Could not authenticate with the provider.', 'wpforms' ),
+		'save_refresh'                    => esc_html__( 'Save and Refresh', 'wpforms' ),
+		'upgrade_completed'               => esc_html__( 'Upgrade was successfully completed!', 'wpforms' ),
+		'upload_image_title'              => esc_html__( 'Upload or Choose Your Image', 'wpforms' ),
+		'upload_image_button'             => esc_html__( 'Use Image', 'wpforms' ),
+		'upgrade_modal'                   => wpforms_get_upgrade_modal_text(),
 	);
 	$strings = apply_filters( 'wpforms_admin_strings', $strings );
 
@@ -369,18 +354,73 @@ function wpforms_check_php_version() {
 	// Display the notice, finally.
 	WPForms_Admin_Notice::error(
 		'<p>' .
-		/* translators: %1$s - WPForms plugin name; %2$s - opening a link tag; %3$s - closing a link tag. */
 		sprintf(
-			__(
-				'Your site is running an outdated version of PHP that is no longer supported and may cause issues with %1$s. %2$sRead more%3$s for additional information.',
-				'wpforms'
+			wp_kses(
+				/* translators: %1$s - WPForms plugin name; %2$s - WPForms.com URL to a related doc. */
+				__( 'Your site is running an outdated version of PHP that is no longer supported and may cause issues with %1$s. <a href="%2$s" target="_blank" rel="noopener noreferrer">Read more</a> for additional information.', 'wpforms' ),
+				array(
+					'a' => array(
+						'href'   => array(),
+						'target' => array(),
+						'rel'    => array(),
+					),
+				)
 			),
 			'<strong>WPForms</strong>',
-			'<a href="https://wpforms.com/docs/supported-php-version/" target="_blank">',
-			'</a>'
+			'https://wpforms.com/docs/supported-php-version/'
 		) .
 		'</p>'
 	);
 }
 
 add_action( 'admin_init', 'wpforms_check_php_version' );
+
+/**
+ * Get an upgrade modal text.
+ */
+function wpforms_get_upgrade_modal_text() {
+
+	return
+		'<p>' .
+		esc_html__( 'Thanks for your interest in WPForms Pro!', 'wpforms' ) . '<br>' .
+		sprintf(
+			wp_kses(
+				/* translators: %s - WPForms.com contact page URL. */
+				__( 'If you have any questions or issues just <a href="%s" target="_blank" rel="noopener noreferrer">let us know</a>.', 'wpforms' ),
+				array(
+					'a' => array(
+						'href'   => array(),
+						'target' => array(),
+						'rel'    => array(),
+					),
+				)
+			),
+			'https://wpforms.com/contact/'
+		) .
+		'</p>' .
+		'<p>' .
+		wp_kses(
+			__( 'After purchasing WPForms Pro, you\'ll need to <strong>download and install the Pro version of the plugin</strong>, and then <strong>remove the free plugin</strong>.', 'wpforms' ),
+			array(
+				'strong' => array(),
+			)
+		) . '<br>' .
+		esc_html__( '(Don\'t worry, all your forms and settings will be preserved.)', 'wpforms' ) .
+		'</p>' .
+		'<p>' .
+		sprintf(
+			wp_kses(
+				/* translators: %s - WPForms.com upgrade from Lite to paid docs page URL. */
+				__( 'Check out <a href="%s" target="_blank" rel="noopener noreferrer">our documentation</a> for step-by-step instructions.', 'wpforms' ),
+				array(
+					'a' => array(
+						'href'   => array(),
+						'target' => array(),
+						'rel'    => array(),
+					),
+				)
+			),
+			'https://wpforms.com/docs/upgrade-wpforms-lite-paid-license/'
+		) .
+		'</p>';
+}

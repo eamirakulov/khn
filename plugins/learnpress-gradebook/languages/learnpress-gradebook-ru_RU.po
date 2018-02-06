@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Package Name\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-10-24 16:01+0700\n"
-"PO-Revision-Date: 2018-01-28 23:50+0000\n"
+"PO-Revision-Date: 2018-02-06 08:07+0000\n"
 "Last-Translator: admin <emil@amirakulov.com>\n"
 "Language-Team: Russian\n"
 "Language: ru-RU\n"
@@ -13,6 +13,46 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && "
 "n%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2)\n"
 "X-Generator: Loco - https://localise.biz/"
+
+#: learnpress-gradebook.php:341
+#, php-format
+msgid ""
+"<strong>Gradebook</strong> addon version %s requires LearnPress version %s "
+"or higher"
+msgstr ""
+
+#: inc/class-gradebook-export.php:425
+msgid "False"
+msgstr ""
+
+#: inc/class-gradebook-export.php:446
+#: inc/admin/class-gradebook-list-table.php:140
+msgid "Enrolled"
+msgstr "Записан(а)"
+
+#: inc/admin/class-gradebook-list-table.php:174
+msgid "username, email, display name, etc..."
+msgstr ""
+
+#: inc/admin/class-gradebook-list-table.php:175
+msgid "From"
+msgstr ""
+
+#: inc/admin/class-gradebook-list-table.php:177
+msgid "To"
+msgstr ""
+
+#: inc/admin/gradebook.php:5
+msgid "Error"
+msgstr ""
+
+#: inc/admin/gradebook.php:32
+msgid "processing"
+msgstr ""
+
+#: inc/admin/gradebook.php:35
+msgid "Export to CSV"
+msgstr ""
 
 #: learnpress-gradebook.php:76 inc/class-gradebook-export.php:437
 msgid "User ID"
@@ -91,22 +131,6 @@ msgstr "Кол-во на стр"
 msgid "View"
 msgstr "Показать"
 
-#: learnpress-gradebook.php:341
-#, php-format
-msgid ""
-"<strong>Gradebook</strong> addon version %s requires LearnPress version %s "
-"or higher"
-msgstr ""
-
-#: inc/class-gradebook-export.php:425
-msgid "False"
-msgstr ""
-
-#: inc/class-gradebook-export.php:446
-#: inc/admin/class-gradebook-list-table.php:140
-msgid "Enrolled"
-msgstr ""
-
 #: inc/admin/class-gradebook-list-table.php:105
 #: inc/admin/class-gradebook-list-table.php:173
 msgid "Student"
@@ -120,18 +144,6 @@ msgstr "Средний (общ)"
 msgid "Final"
 msgstr "Финал"
 
-#: inc/admin/class-gradebook-list-table.php:174
-msgid "username, email, display name, etc..."
-msgstr ""
-
-#: inc/admin/class-gradebook-list-table.php:175
-msgid "From"
-msgstr ""
-
-#: inc/admin/class-gradebook-list-table.php:177
-msgid "To"
-msgstr ""
-
 #: inc/admin/class-gradebook-list-table.php:207
 msgid "Details"
 msgstr "Детали"
@@ -139,18 +151,6 @@ msgstr "Детали"
 #: inc/admin/class-gradebook-list-table.php:245
 msgid "Finished"
 msgstr "Окончено"
-
-#: inc/admin/gradebook.php:5
-msgid "Error"
-msgstr ""
-
-#: inc/admin/gradebook.php:32
-msgid "processing"
-msgstr ""
-
-#: inc/admin/gradebook.php:35
-msgid "Export to CSV"
-msgstr ""
 
 #: inc/admin/views/gradebook-details.php:11 templates/profile/gradebook.php:58
 msgid "Title"

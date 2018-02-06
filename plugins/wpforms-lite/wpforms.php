@@ -5,7 +5,7 @@
  * Description: Beginner friendly WordPress contact form plugin. Use our Drag & Drop form builder to create your WordPress forms.
  * Author:      WPForms
  * Author URI:  https://wpforms.com
- * Version:     1.4.3
+ * Version:     1.4.4
  * Text Domain: wpforms
  * Domain Path: languages
  *
@@ -46,6 +46,7 @@ if ( class_exists( 'WPForms' ) ) {
 
 		deactivate_plugins( plugin_basename( __FILE__ ) );
 	}
+
 	add_action( 'admin_init', 'wpforms_deactivate' );
 
 	/**
@@ -55,12 +56,13 @@ if ( class_exists( 'WPForms' ) ) {
 	 */
 	function wpforms_lite_notice() {
 
-		echo '<div class="notice notice-warning"><p>' . __( 'Please deactivate WPForms Lite before activating WPForms.', 'wpforms' ) . '</p></div>';
+		echo '<div class="notice notice-warning"><p>' . esc_html__( 'Please deactivate WPForms Lite before activating WPForms.', 'wpforms' ) . '</p></div>';
 
 		if ( isset( $_GET['activate'] ) ) {
 			unset( $_GET['activate'] );
 		}
 	}
+
 	add_action( 'admin_notices', 'wpforms_lite_notice' );
 
 } else {
@@ -79,7 +81,7 @@ if ( class_exists( 'WPForms' ) ) {
 		 *
 		 * @since 1.0.0
 		 *
-		 * @var object
+		 * @var WPForms
 		 */
 		private static $instance;
 
@@ -90,14 +92,14 @@ if ( class_exists( 'WPForms' ) ) {
 		 *
 		 * @var string
 		 */
-		public $version = '1.4.3';
+		public $version = '1.4.4';
 
 		/**
 		 * The form data handler instance.
 		 *
 		 * @since 1.0.0
 		 *
-		 * @var object WPForms_Form_Handler
+		 * @var WPForms_Form_Handler
 		 */
 		public $form;
 
@@ -106,7 +108,7 @@ if ( class_exists( 'WPForms' ) ) {
 		 *
 		 * @since 1.0.0
 		 *
-		 * @var object WPForms_Entry_Handler
+		 * @var WPForms_Entry_Handler
 		 */
 		public $entry;
 
@@ -115,7 +117,7 @@ if ( class_exists( 'WPForms' ) ) {
 		 *
 		 * @since 1.4.3
 		 *
-		 * @var object WPForms_Entry_Fields_Handler
+		 * @var WPForms_Entry_Fields_Handler
 		 */
 		public $entry_fields;
 
@@ -124,7 +126,7 @@ if ( class_exists( 'WPForms' ) ) {
 		 *
 		 * @since 1.1.6
 		 *
-		 * @var object WPForms_Entry_Meta_Handler
+		 * @var WPForms_Entry_Meta_Handler
 		 */
 		public $entry_meta;
 
@@ -133,7 +135,7 @@ if ( class_exists( 'WPForms' ) ) {
 		 *
 		 * @since 1.0.0
 		 *
-		 * @var object WPForms_Frontend
+		 * @var WPForms_Frontend
 		 */
 		public $frontend;
 
@@ -142,7 +144,7 @@ if ( class_exists( 'WPForms' ) ) {
 		 *
 		 * @since 1.0.0
 		 *
-		 * @var object WPForms_Process
+		 * @var WPForms_Process
 		 */
 		public $process;
 
@@ -151,7 +153,7 @@ if ( class_exists( 'WPForms' ) ) {
 		 *
 		 * @since 1.0.0
 		 *
-		 * @var object WPForms_Smart_Tags
+		 * @var WPForms_Smart_Tags
 		 */
 		public $smart_tags;
 
@@ -160,7 +162,7 @@ if ( class_exists( 'WPForms' ) ) {
 		 *
 		 * @since 1.0.0
 		 *
-		 * @var object WPForms_Logging
+		 * @var WPForms_Logging
 		 */
 		public $logs;
 
@@ -169,7 +171,7 @@ if ( class_exists( 'WPForms' ) ) {
 		 *
 		 * @since 1.1.9
 		 *
-		 * @var object WPForms_Preview
+		 * @var WPForms_Preview
 		 */
 		public $preview;
 
@@ -178,7 +180,7 @@ if ( class_exists( 'WPForms' ) ) {
 		 *
 		 * @since 1.0.0
 		 *
-		 * @var object WPForms_License
+		 * @var WPForms_License
 		 */
 		public $license;
 
@@ -220,6 +222,7 @@ if ( class_exists( 'WPForms' ) ) {
 
 				add_action( 'plugins_loaded', array( self::$instance, 'objects' ), 10 );
 			}
+
 			return self::$instance;
 		}
 
@@ -371,12 +374,14 @@ if ( class_exists( 'WPForms' ) ) {
 	 * The function which returns the one WPForms instance.
 	 *
 	 * @since 1.0.0
-	 * @return object
+	 *
+	 * @return WPForms
 	 */
 	function wpforms() {
 
 		return WPForms::instance();
 	}
+
 	wpforms();
 
 } // End if().

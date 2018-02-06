@@ -18,9 +18,9 @@ class WPForms_Template_Contact extends WPForms_Template {
 	 */
 	public function init() {
 
-		$this->name        = __( 'Simple Contact Form', 'wpforms' );
+		$this->name        = esc_html__( 'Simple Contact Form', 'wpforms' );
 		$this->slug        = 'contact';
-		$this->description = __( 'Allow your users to contact you with this simple contact form. You can add and remove fields as needed.', 'wpforms' );
+		$this->description = esc_html__( 'Allow your users to contact you with this simple contact form. You can add and remove fields as needed.', 'wpforms' );
 		$this->includes    = '';
 		$this->icon        = '';
 		$this->modal       = '';
@@ -31,21 +31,21 @@ class WPForms_Template_Contact extends WPForms_Template {
 				'0' => array(
 					'id'       => '0',
 					'type'     => 'name',
-					'label'    => __( 'Name', 'wpforms' ),
+					'label'    => esc_html__( 'Name', 'wpforms' ),
 					'required' => '1',
 					'size'     => 'medium',
 				),
 				'1' => array(
 					'id'       => '1',
 					'type'     => 'email',
-					'label'    => __( 'Email', 'wpforms' ),
+					'label'    => esc_html__( 'Email', 'wpforms' ),
 					'required' => '1',
 					'size'     => 'medium',
 				),
 				'2' => array(
 					'id'          => '2',
 					'type'        => 'textarea',
-					'label'       => __( 'Comment or Message', 'wpforms' ),
+					'label'       => esc_html__( 'Comment or Message', 'wpforms' ),
 					'description' => '',
 					'required'    => '1',
 					'size'        => 'medium',
@@ -63,7 +63,7 @@ class WPForms_Template_Contact extends WPForms_Template {
 				),
 				'honeypot'                    => '1',
 				'confirmation_message_scroll' => '1',
-				'submit_text_processing'      => __( 'Sending...', 'wpforms' ),
+				'submit_text_processing'      => esc_html__( 'Sending...', 'wpforms' ),
 			),
 			'meta'     => array(
 				'template' => $this->slug,

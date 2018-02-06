@@ -5,7 +5,7 @@
  *
  * This class handles all (notification) emails sent by WPForms.
  *
- * Heavily influceded by the great AffiliateWP plugin by Pippin Williamson.
+ * Heavily influenced by the great AffiliateWP plugin by Pippin Williamson.
  * https://github.com/AffiliateWP/AffiliateWP/blob/master/includes/emails/class-affwp-emails.php
  *
  * @package    WPForms
@@ -255,7 +255,7 @@ class WPForms_WP_Emails {
 	public function get_headers() {
 
 		if ( ! $this->headers ) {
-			$this->headers  = "From: {$this->get_from_name()} <{$this->get_from_address()}>\r\n";
+			$this->headers = "From: {$this->get_from_name()} <{$this->get_from_address()}>\r\n";
 			if ( $this->get_reply_to() ) {
 				$this->headers .= "Reply-To: {$this->get_reply_to()}\r\n";
 			}
@@ -282,6 +282,7 @@ class WPForms_WP_Emails {
 		if ( false === $this->html ) {
 			$message = $this->process_tag( $message, false, true );
 			$message = str_replace( '{all_fields}', $this->wpforms_html_field_value( false ), $message );
+
 			return apply_filters( 'wpforms_email_message', $message, $this );
 		}
 
@@ -289,17 +290,17 @@ class WPForms_WP_Emails {
 
 		$this->get_template_part( 'header', $this->get_template(), true );
 
-		// Hooks into the email header
+		// Hooks into the email header.
 		do_action( 'wpforms_email_header', $this );
 
 		$this->get_template_part( 'body', $this->get_template(), true );
 
-		// Hooks into the email body
+		// Hooks into the email body.
 		do_action( 'wpforms_email_body', $this );
 
 		$this->get_template_part( 'footer', $this->get_template(), true );
 
-		// Hooks into the email footer
+		// Hooks into the email footer.
 		do_action( 'wpforms_email_footer', $this );
 
 		$message = $this->process_tag( $message, false );
@@ -328,7 +329,7 @@ class WPForms_WP_Emails {
 	public function send( $to, $subject, $message, $attachments = array() ) {
 
 		if ( ! did_action( 'init' ) && ! did_action( 'admin_init' ) ) {
-			_doing_it_wrong( __FUNCTION__, __( 'You cannot send emails with WPForms_WP_Emails until init/admin_init has been reached.', 'wpforms' ), null );
+			_doing_it_wrong( __FUNCTION__, esc_html__( 'You cannot send emails with WPForms_WP_Emails until init/admin_init has been reached.', 'wpforms' ), null );
 
 			return false;
 		}
@@ -448,8 +449,9 @@ class WPForms_WP_Emails {
 		$message = '';
 
 		if ( $html ) {
-
-			// HTML emails ---------------------------------------------------//
+			/*
+			 * HTML emails.
+			 */
 			ob_start();
 
 			// Hooks into the email field.
@@ -469,8 +471,16 @@ class WPForms_WP_Emails {
 					continue;
 				}
 
-				$field_val  = empty( $field['value'] ) && '0' !== $field['value'] ? '<em>' . __( '(empty)', 'wpforms' ) . '</em>' : $field['value'];
-				$field_name = ! empty( $field['name'] ) ? $field['name'] : __( 'Field ID #', 'wpforms' ) . absint( $field['id'] );
+				$field_val  = empty( $field['value'] ) && '0' !== $field['value'] ? '<em>' . esc_html__( '(empty)', 'wpforms' ) . '</em>' : $field['value'];
+				$field_name = $field['name'];
+
+				if ( empty( $field_name ) ) {
+					$field_name = sprintf(
+						/* translators: %d - field ID. */
+						esc_html__( 'Field ID #%d', 'wpforms' ),
+						absint( $field['id'] )
+					);
+				}
 
 				$field_item = $field_template;
 				if ( 1 === $x ) {
@@ -481,19 +491,29 @@ class WPForms_WP_Emails {
 				$field_item  = str_replace( '{field_value}', $field_value, $field_item );
 
 				$message .= wpautop( $field_item );
-				$x++;
+				$x ++;
 			}
 		} else {
-
-			// Plain Text emails ---------------------------------------------//
+			/*
+			 * Plain Text emails.
+			 */
 			foreach ( $this->fields as $field ) {
 
 				if ( ! apply_filters( 'wpforms_email_display_empty_fields', false ) && ( empty( $field['value'] ) && '0' !== $field['value'] ) ) {
 					continue;
 				}
 
-				$field_val   = empty( $field['value'] ) && '0' !== $field['value'] ? __( '(empty)', 'wpforms' ) : $field['value'];
-				$field_name  = ! empty( $field['name'] ) ? $field['name'] : __( 'Field ID #', 'wpforms' ) . absint( $field['id'] );
+				$field_val  = empty( $field['value'] ) && '0' !== $field['value'] ? esc_html__( '(empty)', 'wpforms' ) : $field['value'];
+				$field_name = $field['name'];
+
+				if ( empty( $field_name ) ) {
+					$field_name = sprintf(
+						/* translators: %d - field ID. */
+						esc_html__( 'Field ID #%d', 'wpforms' ),
+						absint( $field['id'] )
+					);
+				}
+
 				$message    .= '--- ' . wpforms_decode_string( $field_name ) . " ---\r\n\r\n";
 				$field_value = wpforms_decode_string( $field_val ) . "\r\n\r\n";
 				$message    .= apply_filters( 'wpforms_plaintext_field_value', $field_value, $field, $this->form_data );
@@ -501,7 +521,7 @@ class WPForms_WP_Emails {
 		}
 
 		if ( empty( $message ) ) {
-			$empty_message = __( 'An empty form was submitted.', 'wpforms' );
+			$empty_message = esc_html__( 'An empty form was submitted.', 'wpforms' );
 			$message       = $html ? wpautop( $empty_message ) : $empty_message;
 		}
 
@@ -516,10 +536,7 @@ class WPForms_WP_Emails {
 	 * @return bool
 	 */
 	public function is_email_disabled() {
-
-		$disabled = (bool) apply_filters( 'wpforms_disable_all_emails', false, $this );
-
-		return $disabled;
+		return (bool) apply_filters( 'wpforms_disable_all_emails', false, $this );
 	}
 
 	/**
@@ -551,14 +568,14 @@ class WPForms_WP_Emails {
 	 */
 	public function get_template_part( $slug, $name = null, $load = true ) {
 
-		// Setup possible parts
+		// Setup possible parts.
 		$templates = array();
 		if ( isset( $name ) ) {
 			$templates[] = $slug . '-' . $name . '.php';
 		}
 		$templates[] = $slug . '.php';
 
-		// Return the part that is found
+		// Return the part that is found.
 		return $this->locate_template( $templates, $load, false );
 	}
 
@@ -582,21 +599,21 @@ class WPForms_WP_Emails {
 	 */
 	public function locate_template( $template_names, $load = false, $require_once = true ) {
 
-		// No file found yet
+		// No file found yet.
 		$located = false;
 
-		// Try to find a template file
+		// Try to find a template file.
 		foreach ( (array) $template_names as $template_name ) {
 
-			// Continue if template is empty
+			// Continue if template is empty.
 			if ( empty( $template_name ) ) {
 				continue;
 			}
 
-			// Trim off any slashes from the template name
+			// Trim off any slashes from the template name.
 			$template_name = ltrim( $template_name, '/' );
 
-			// try locating this template file by looping through the template paths
+			// Try locating this template file by looping through the template paths.
 			foreach ( $this->get_theme_template_paths() as $template_path ) {
 				if ( file_exists( $template_path . $template_name ) ) {
 					$located = $template_path . $template_name;
@@ -631,7 +648,7 @@ class WPForms_WP_Emails {
 
 		$file_paths = apply_filters( 'wpforms_email_template_paths', $file_paths );
 
-		// sort the file paths based on priority
+		// Sort the file paths based on priority.
 		ksort( $file_paths, SORT_NUMERIC );
 
 		return array_map( 'trailingslashit', $file_paths );

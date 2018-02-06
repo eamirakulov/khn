@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Settings management panel.
  *
@@ -17,8 +18,8 @@ class WPForms_Builder_Panel_Settings extends WPForms_Builder_Panel {
 	 */
 	public function init() {
 
-		// Define panel information
-		$this->name    = __( 'Settings', 'wpforms' );
+		// Define panel information.
+		$this->name    = esc_html__( 'Settings', 'wpforms' );
 		$this->slug    = 'settings';
 		$this->icon    = 'fa-sliders';
 		$this->order   = 10;
@@ -32,7 +33,7 @@ class WPForms_Builder_Panel_Settings extends WPForms_Builder_Panel {
 	 */
 	public function enqueues() {
 
-		// CSS
+		// CSS.
 		wp_enqueue_style(
 			'wpforms-builder-settings',
 			WPFORMS_PLUGIN_URL . 'assets/css/admin-builder-settings.css',
@@ -48,19 +49,19 @@ class WPForms_Builder_Panel_Settings extends WPForms_Builder_Panel {
 	 */
 	public function panel_sidebar() {
 
-		// Sidebar contents are not valid unless we have a form
+		// Sidebar contents are not valid unless we have a form.
 		if ( ! $this->form ) {
 			return;
 		}
 
 		$sections = array(
-			'general'       => __( 'General', 'wpforms' ),
-			'notifications' => __( 'Notifications', 'wpforms' ),
-			'confirmation'  => __( 'Confirmation', 'wpforms' ),
+			'general'       => esc_html__( 'General', 'wpforms' ),
+			'notifications' => esc_html__( 'Notifications', 'wpforms' ),
+			'confirmation'  => esc_html__( 'Confirmation', 'wpforms' ),
 		);
 		$sections = apply_filters( 'wpforms_builder_settings_sections', $sections, $this->form_data );
 		foreach ( $sections as $slug => $section ) {
-			$this->panel_sidebar_section( $section, $slug  );
+			$this->panel_sidebar_section( $section, $slug );
 		}
 	}
 
@@ -71,27 +72,37 @@ class WPForms_Builder_Panel_Settings extends WPForms_Builder_Panel {
 	 */
 	public function panel_content() {
 
-		// Check if there is a form created
+		// Check if there is a form created.
 		if ( ! $this->form ) {
 			echo '<div class="wpforms-alert wpforms-alert-info">';
-				_e( 'You need to <a href="#" class="wpforms-panel-switch" data-panel="setup">setup your form</a> before you can manage the settings.', 'wpforms' );
+			echo wp_kses(
+				__( 'You need to <a href="#" class="wpforms-panel-switch" data-panel="setup">setup your form</a> before you can manage the settings.', 'wpforms' ),
+				array(
+					'a' => array(
+						'href'       => array(),
+						'class'      => array(),
+						'data-panel' => array(),
+					),
+				)
+			);
 			echo '</div>';
+
 			return;
 		}
 
 		// --------------------------------------------------------------------//
-		// General
+		// General.
 		// --------------------------------------------------------------------//
 		echo '<div class="wpforms-panel-content-section wpforms-panel-content-section-general">';
 		echo '<div class="wpforms-panel-content-section-title">';
-			_e( 'General', 'wpforms' );
+		esc_html_e( 'General', 'wpforms' );
 		echo '</div>';
 		wpforms_panel_field(
 			'text',
 			'settings',
 			'form_title',
 			$this->form_data,
-			__( 'Form Name', 'wpforms' ),
+			esc_html__( 'Form Name', 'wpforms' ),
 			array(
 				'default' => $this->form->post_title,
 			)
@@ -101,16 +112,16 @@ class WPForms_Builder_Panel_Settings extends WPForms_Builder_Panel {
 			'settings',
 			'form_desc',
 			$this->form_data,
-			__( 'Form Description', 'wpforms' )
+			esc_html__( 'Form Description', 'wpforms' )
 		);
 		wpforms_panel_field(
 			'text',
 			'settings',
 			'form_class',
 			$this->form_data,
-			__( 'Form CSS Class', 'wpforms' ),
+			esc_html__( 'Form CSS Class', 'wpforms' ),
 			array(
-				'tooltip' => __( 'Enter CSS class names for the form wrapper. Multiple class names should be separated with spaces.', 'wpforms' ),
+				'tooltip' => esc_html__( 'Enter CSS class names for the form wrapper. Multiple class names should be separated with spaces.', 'wpforms' ),
 			)
 		);
 		wpforms_panel_field(
@@ -118,9 +129,9 @@ class WPForms_Builder_Panel_Settings extends WPForms_Builder_Panel {
 			'settings',
 			'submit_text',
 			$this->form_data,
-			__( 'Submit Button Text', 'wpforms' ),
+			esc_html__( 'Submit Button Text', 'wpforms' ),
 			array(
-				'default' => __( 'Submit', 'wpforms' ),
+				'default' => esc_html__( 'Submit', 'wpforms' ),
 			)
 		);
 		wpforms_panel_field(
@@ -128,9 +139,9 @@ class WPForms_Builder_Panel_Settings extends WPForms_Builder_Panel {
 			'settings',
 			'submit_text_processing',
 			$this->form_data,
-			__( 'Submit Button Processing Text', 'wpforms' ),
+			esc_html__( 'Submit Button Processing Text', 'wpforms' ),
 			array(
-				'tooltip' => __( 'Enter the submit button text you would like the button display while the form submit is processing.', 'wpforms' ),
+				'tooltip' => esc_html__( 'Enter the submit button text you would like the button display while the form submit is processing.', 'wpforms' ),
 			)
 		);
 		wpforms_panel_field(
@@ -138,9 +149,9 @@ class WPForms_Builder_Panel_Settings extends WPForms_Builder_Panel {
 			'settings',
 			'submit_class',
 			$this->form_data,
-			__( 'Submit Button CSS Class', 'wpforms' ),
+			esc_html__( 'Submit Button CSS Class', 'wpforms' ),
 			array(
-				'tooltip' => __( 'Enter CSS class names for the form submit button. Multiple names should be separated with spaces.', 'wpforms' ),
+				'tooltip' => esc_html__( 'Enter CSS class names for the form submit button. Multiple names should be separated with spaces.', 'wpforms' ),
 			)
 		);
 		wpforms_panel_field(
@@ -148,7 +159,7 @@ class WPForms_Builder_Panel_Settings extends WPForms_Builder_Panel {
 			'settings',
 			'honeypot',
 			$this->form_data,
-			__( 'Enable anti-spam honeypot', 'wpforms' )
+			esc_html__( 'Enable anti-spam honeypot', 'wpforms' )
 		);
 		$recaptcha_key    = wpforms_setting( 'recaptcha-site-key' );
 		$recaptcha_secret = wpforms_setting( 'recaptcha-secret-key' );
@@ -159,38 +170,38 @@ class WPForms_Builder_Panel_Settings extends WPForms_Builder_Panel {
 				'settings',
 				'recaptcha',
 				$this->form_data,
-				'invisible' === $recaptcha_type ? __( 'Enable Google invisible reCAPTCHA', 'wpforms' ) : __( 'Enable Google reCAPTCHA (v2)', 'wpforms' )
+				'invisible' === $recaptcha_type ? esc_html__( 'Enable Google invisible reCAPTCHA', 'wpforms' ) : esc_html__( 'Enable Google reCAPTCHA (v2)', 'wpforms' )
 			);
 		}
 		do_action( 'wpforms_form_settings_general', $this );
 		echo '</div>';
 
 		// --------------------------------------------------------------------//
-		// Notifications
+		// Notifications.
 		// --------------------------------------------------------------------//
 		echo '<div class="wpforms-panel-content-section wpforms-panel-content-section-notifications">';
 		do_action( 'wpforms_form_settings_notifications', $this );
 		echo '</div>';
 
 		// --------------------------------------------------------------------//
-		// Confirmation
+		// Confirmation.
 		// --------------------------------------------------------------------//
 		echo '<div class="wpforms-panel-content-section wpforms-panel-content-section-confirmation">';
 		echo '<div class="wpforms-panel-content-section-title">';
-			_e( 'Confirmation', 'wpforms' );
+		esc_html_e( 'Confirmation', 'wpforms' );
 		echo '</div>';
 		wpforms_panel_field(
 			'select',
 			'settings',
 			'confirmation_type',
 			$this->form_data,
-			__( 'Confirmation Type', 'wpforms' ),
+			esc_html__( 'Confirmation Type', 'wpforms' ),
 			array(
 				'default' => 'message',
 				'options' => array(
-					'message'  => __( 'Message', 'wpforms' ),
-					'page'     => __( 'Show Page', 'wpforms' ),
-					'redirect' => __( 'Go to URL (Redirect)', 'wpforms' ),
+					'message'  => esc_html__( 'Message', 'wpforms' ),
+					'page'     => esc_html__( 'Show Page', 'wpforms' ),
+					'redirect' => esc_html__( 'Go to URL (Redirect)', 'wpforms' ),
 				),
 			)
 		);
@@ -199,9 +210,9 @@ class WPForms_Builder_Panel_Settings extends WPForms_Builder_Panel {
 			'settings',
 			'confirmation_message',
 			$this->form_data,
-			__( 'Confirmation Message', 'wpforms' ),
+			esc_html__( 'Confirmation Message', 'wpforms' ),
 			array(
-				'default' => __( 'Thanks for contacting us! We will be in touch with you shortly.', 'wpforms' ),
+				'default' => esc_html__( 'Thanks for contacting us! We will be in touch with you shortly.', 'wpforms' ),
 				'tinymce' => array(
 					'editor_height' => '200',
 				),
@@ -212,9 +223,9 @@ class WPForms_Builder_Panel_Settings extends WPForms_Builder_Panel {
 			'settings',
 			'confirmation_message_scroll',
 			$this->form_data,
-			__( 'Automatically scroll to the confirmation message', 'wpforms' )
+			esc_html__( 'Automatically scroll to the confirmation message', 'wpforms' )
 		);
-		$p = array();
+		$p     = array();
 		$pages = get_pages();
 		foreach ( $pages as $page ) {
 			$depth          = count( $page->ancestors );
@@ -225,7 +236,7 @@ class WPForms_Builder_Panel_Settings extends WPForms_Builder_Panel {
 			'settings',
 			'confirmation_page',
 			$this->form_data,
-			__( 'Confirmation Page', 'wpforms' ),
+			esc_html__( 'Confirmation Page', 'wpforms' ),
 			array(
 				'options' => $p,
 			)
@@ -235,7 +246,7 @@ class WPForms_Builder_Panel_Settings extends WPForms_Builder_Panel {
 			'settings',
 			'confirmation_redirect',
 			$this->form_data,
-			__( 'Confirmation Redirect URL', 'wpforms' )
+			esc_html__( 'Confirmation Redirect URL', 'wpforms' )
 		);
 		do_action( 'wpforms_form_settings_confirmation', $this );
 		echo '</div>';

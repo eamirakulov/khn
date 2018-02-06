@@ -78,7 +78,7 @@ class WPForms_Contact_Form_7 extends WPForms_Importer {
 		check_ajax_referer( 'wpforms-admin', 'nonce' );
 
 		// Check for permissions.
-		if ( ! current_user_can( apply_filters( 'wpforms_manage_cap', 'manage_options' ) ) ) {
+		if ( ! wpforms_current_user_can() ) {
 			wp_send_json_error();
 		}
 
@@ -103,16 +103,16 @@ class WPForms_Contact_Form_7 extends WPForms_Importer {
 			'settings' => array(
 				'form_title'                  => $cf7_form_name,
 				'form_desc'                   => '',
-				'submit_text'                 => __( 'Submit', 'wpforms' ),
-				'submit_text_processing'      => __( 'Sending', 'wpforms' ),
+				'submit_text'                 => esc_html__( 'Submit', 'wpforms' ),
+				'submit_text_processing'      => esc_html__( 'Sending', 'wpforms' ),
 				'honeypot'                    => '1',
 				'notification_enable'         => '1',
 				'notifications'               => array(
 					1 => array(
-						'notification_name' => __( 'Notification 1', 'wpforms' ),
+						'notification_name' => esc_html__( 'Notification 1', 'wpforms' ),
 						'email'             => '{admin_email}',
 						/* translators: %s - Contact Form 7 form name. */
-						'subject'           => sprintf( __( 'New Entry: %s', 'wpforms' ), $cf7_form_name ),
+						'subject'           => sprintf( esc_html__( 'New Entry: %s', 'wpforms' ), $cf7_form_name ),
 						'sender_name'       => get_bloginfo( 'name' ),
 						'sender_address'    => '{admin_email}',
 						'replyto'           => '',
@@ -120,7 +120,7 @@ class WPForms_Contact_Form_7 extends WPForms_Importer {
 					),
 				),
 				'confirmation_type'           => 'message',
-				'confirmation_message'        => __( 'Thanks for contacting us! We will be in touch with you shortly.', 'wpforms' ),
+				'confirmation_message'        => esc_html__( 'Thanks for contacting us! We will be in touch with you shortly.', 'wpforms' ),
 				'confirmation_message_scroll' => '1',
 				'import_form_id'              => $cf7_id,
 			),
@@ -131,7 +131,7 @@ class WPForms_Contact_Form_7 extends WPForms_Importer {
 			wp_send_json_success( array(
 				'error' => true,
 				'name'  => sanitize_text_field( $cf7_form_name ),
-				'msg'   => __( 'No form fields found.', 'wpforms' ),
+				'msg'   => esc_html__( 'No form fields found.', 'wpforms' ),
 			) );
 		}
 
@@ -299,7 +299,7 @@ class WPForms_Contact_Form_7 extends WPForms_Importer {
 					$form['fields'][ $field_id ] = array(
 						'id'         => $field_id,
 						'type'       => 'checkbox',
-						'label'      => __( 'Acceptance Field', 'wpforms' ),
+						'label'      => esc_html__( 'Acceptance Field', 'wpforms' ),
 						'choices'    => array(
 							1 => array(
 								'label' => $label,
@@ -394,10 +394,10 @@ class WPForms_Contact_Form_7 extends WPForms_Importer {
 			// Check if a secondary notification is enabled, if so set defaults
 			// and set it up.
 			$form['settings']['notifications'][2] = array(
-				'notification_name' => __( 'Notification 2', 'wpforms' ),
+				'notification_name' => esc_html__( 'Notification 2', 'wpforms' ),
 				'email'             => '{admin_email}',
 				/* translators: %s - Contact Form 7 form name. */
-				'subject'           => sprintf( __( 'New Entry: %s', 'wpforms' ), $cf7_form_name ),
+				'subject'           => sprintf( esc_html__( 'New Entry: %s', 'wpforms' ), $cf7_form_name ),
 				'sender_name'       => get_bloginfo( 'name' ),
 				'sender_address'    => '{admin_email}',
 				'replyto'           => '',
@@ -485,12 +485,14 @@ class WPForms_Contact_Form_7 extends WPForms_Importer {
 			}
 		}
 
-		/* translators: %1$s - field type; %2$s - field name if available. */
-		return sprintf(
-			__( '%1$s Field%2$s', 'wpforms' ),
+		$label = sprintf(
+			/* translators: %1$s - field type; %2$s - field name if available. */
+			esc_html__( '%1$s Field %2$s', 'wpforms' ),
 			ucfirst( $type ),
-			! empty( $name ) ? " ($name)" : ''
+			! empty( $name ) ? "($name)" : ''
 		);
+
+		return trim( $label );
 	}
 
 	/**

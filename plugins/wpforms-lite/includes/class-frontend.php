@@ -1002,17 +1002,17 @@ class WPForms_Frontend {
 
 		// Define base strings.
 		$strings = array(
-			'val_required'        => wpforms_setting( 'validation-required', __( 'This field is required.', 'wpforms' ) ),
-			'val_url'             => wpforms_setting( 'validation-url', __( 'Please enter a valid URL.', 'wpforms' ) ),
-			'val_email'           => wpforms_setting( 'validation-email', __( 'Please enter a valid email address.', 'wpforms' ) ),
-			'val_number'          => wpforms_setting( 'validation-number', __( 'Please enter a valid number.', 'wpforms' ) ),
-			'val_confirm'         => wpforms_setting( 'validation-confirm', __( 'Field values do not match.', 'wpforms' ) ),
-			'val_fileextension'   => wpforms_setting( 'validation-fileextension', __( 'File type is not allowed.', 'wpforms' ) ),
-			'val_filesize'        => wpforms_setting( 'validation-filesize', __( 'File exceeds max size allowed.', 'wpforms' ) ),
-			'val_time12h'         => wpforms_setting( 'validation-time12h', __( 'Please enter time in 12-hour AM/PM format (eg 8:45 AM).', 'wpforms' ) ),
-			'val_time24h'         => wpforms_setting( 'validation-time24h', __( 'Please enter time in 24-hour format (eg 22:45).', 'wpforms' ) ),
-			'val_requiredpayment' => wpforms_setting( 'validation-requiredpayment', __( 'Payment is required.', 'wpforms' ) ),
-			'val_creditcard'      => wpforms_setting( 'validation-creditcard', __( 'Please enter a valid credit card number.', 'wpforms' ) ),
+			'val_required'        => wpforms_setting( 'validation-required', esc_html__( 'This field is required.', 'wpforms' ) ),
+			'val_url'             => wpforms_setting( 'validation-url', esc_html__( 'Please enter a valid URL.', 'wpforms' ) ),
+			'val_email'           => wpforms_setting( 'validation-email', esc_html__( 'Please enter a valid email address.', 'wpforms' ) ),
+			'val_number'          => wpforms_setting( 'validation-number', esc_html__( 'Please enter a valid number.', 'wpforms' ) ),
+			'val_confirm'         => wpforms_setting( 'validation-confirm', esc_html__( 'Field values do not match.', 'wpforms' ) ),
+			'val_fileextension'   => wpforms_setting( 'validation-fileextension', esc_html__( 'File type is not allowed.', 'wpforms' ) ),
+			'val_filesize'        => wpforms_setting( 'validation-filesize', esc_html__( 'File exceeds max size allowed.', 'wpforms' ) ),
+			'val_time12h'         => wpforms_setting( 'validation-time12h', esc_html__( 'Please enter time in 12-hour AM/PM format (eg 8:45 AM).', 'wpforms' ) ),
+			'val_time24h'         => wpforms_setting( 'validation-time24h', esc_html__( 'Please enter time in 24-hour format (eg 22:45).', 'wpforms' ) ),
+			'val_requiredpayment' => wpforms_setting( 'validation-requiredpayment', esc_html__( 'Payment is required.', 'wpforms' ) ),
+			'val_creditcard'      => wpforms_setting( 'validation-creditcard', esc_html__( 'Please enter a valid credit card number.', 'wpforms' ) ),
 		);
 		// Include payment related strings if needed.
 		if ( function_exists( 'wpforms_get_currencies' ) ) {
@@ -1075,7 +1075,15 @@ class WPForms_Frontend {
 				$text = apply_filters(
 					'wpforms_frontend_shortcode_amp_text',
 					sprintf(
-						__( '<a href="%s">Go to the full page</a> to view and submit the form.', 'wpforms' ),
+						wp_kses(
+							/* translators: %s - URL to a non-amp version of a page with the form. */
+							__( '<a href="%s">Go to the full page</a> to view and submit the form.', 'wpforms' ),
+							array(
+								'a' => array(
+									'href' => array(),
+								),
+							)
+						),
 						$link
 					)
 				);

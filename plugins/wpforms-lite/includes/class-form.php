@@ -63,13 +63,13 @@ class WPForms_Form_Handler {
 	 */
 	public function admin_bar( $wp_admin_bar ) {
 
-		if ( ! is_admin_bar_showing() || ! current_user_can( apply_filters( 'wpforms_manage_cap', 'manage_options' ) ) ) {
+		if ( ! is_admin_bar_showing() || ! wpforms_current_user_can() ) {
 			return;
 		}
 
 		$args = array(
 			'id'     => 'wpforms',
-			'title'  => __( 'WPForms', 'wpforms' ),
+			'title'  => esc_html__( 'WPForms', 'wpforms' ),
 			'href'   => admin_url( 'admin.php?page=wpforms-builder' ),
 			'parent' => 'new-content',
 		);
@@ -139,8 +139,8 @@ class WPForms_Form_Handler {
 	 */
 	public function delete( $ids = array() ) {
 
-		// Check for permissions
-		if ( ! current_user_can( apply_filters( 'wpforms_manage_cap', 'manage_options' ) ) ) {
+		// Check for permissions.
+		if ( ! wpforms_current_user_can() ) {
 			return false;
 		}
 
@@ -181,12 +181,12 @@ class WPForms_Form_Handler {
 	 */
 	public function add( $title = '', $args = array(), $data = array() ) {
 
-		// Check for permissions
-		if ( ! current_user_can( apply_filters( 'wpforms_manage_cap', 'manage_options' ) ) ) {
+		// Check for permissions.
+		if ( ! wpforms_current_user_can() ) {
 			return false;
 		}
 
-		// Must have a title
+		// Must have a title.
 		if ( empty( $title ) ) {
 			return false;
 		}
@@ -232,11 +232,11 @@ class WPForms_Form_Handler {
 	 */
 	public function update( $form_id = '', $data = array(), $args = array() ) {
 
-		// This filter breaks forms if they contain HTML
+		// This filter breaks forms if they contain HTML.
 		remove_filter( 'content_save_pre', 'balanceTags', 50 );
 
-		// Check for permissions
-		if ( ! current_user_can( apply_filters( 'wpforms_manage_cap', 'manage_options' ) ) ) {
+		// Check for permissions.
+		if ( ! wpforms_current_user_can() ) {
 			return false;
 		}
 
@@ -325,7 +325,7 @@ class WPForms_Form_Handler {
 	public function duplicate( $ids = array() ) {
 
 		// Check for permissions.
-		if ( ! current_user_can( apply_filters( 'wpforms_manage_cap', 'manage_options' ) ) ) {
+		if ( ! wpforms_current_user_can() ) {
 			return false;
 		}
 
@@ -395,7 +395,7 @@ class WPForms_Form_Handler {
 	public function next_field_id( $form_id ) {
 
 		// Check for permissions.
-		if ( ! current_user_can( apply_filters( 'wpforms_manage_cap', 'manage_options' ) ) ) {
+		if ( ! wpforms_current_user_can() ) {
 			return false;
 		}
 
@@ -458,14 +458,14 @@ class WPForms_Form_Handler {
 	 *
 	 * @param int $form_id
 	 * @param string $meta_key
-	 * @param string $meta_value
+	 * @param mixed $meta_value
 	 *
 	 * @return bool
 	 */
 	public function update_meta( $form_id, $meta_key, $meta_value ) {
 
-		// Check for permissions
-		if ( ! current_user_can( apply_filters( 'wpforms_manage_cap', 'manage_options' ) ) ) {
+		// Check for permissions.
+		if ( ! wpforms_current_user_can() ) {
 			return false;
 		}
 
@@ -508,8 +508,8 @@ class WPForms_Form_Handler {
 	 */
 	public function delete_meta( $form_id, $meta_key ) {
 
-		// Check for permissions
-		if ( ! current_user_can( apply_filters( 'wpforms_manage_cap', 'manage_options' ) ) ) {
+		// Check for permissions.
+		if ( ! wpforms_current_user_can() ) {
 			return false;
 		}
 

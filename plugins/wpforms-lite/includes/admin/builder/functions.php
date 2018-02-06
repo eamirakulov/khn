@@ -26,12 +26,12 @@
  */
 function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args = array(), $echo = true ) {
 
-	// Required params
+	// Required params.
 	if ( empty( $option ) || empty( $panel ) || empty( $field ) ) {
 		return '';
 	}
 
-	// Setup basic vars
+	// Setup basic vars.
 	$panel       = esc_attr( $panel );
 	$field       = esc_attr( $field );
 	$panel_id    = sanitize_html_class( $panel );
@@ -45,7 +45,7 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
 	$data_attr   = '';
 	$output      = '';
 
-	// Check if we should store values in a parent array
+	// Check if we should store values in a parent array.
 	if ( ! empty( $parent ) ) {
 		if ( ! empty( $subsection ) ) {
 			$field_name = sprintf( '%s[%s][%s][%s]', $parent, $panel, $subsection, $field );
@@ -60,7 +60,7 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
 		$value      = isset( $form_data[ $panel ][ $field ] ) ? $form_data[ $panel ][ $field ] : $default;
 	}
 
-	// Check for data attributes
+	// Check for data attributes.
 	if ( ! empty( $args['data'] ) ) {
 		foreach ( $args['data'] as $key => $val ) {
 			if ( is_array( $val ) ) {
@@ -70,10 +70,10 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
 		}
 	}
 
-	// Determine what field type to output
+	// Determine what field type to output.
 	switch ( $option ) {
 
-		// Text input
+		// Text input.
 		case 'text':
 			$type   = ! empty( $args['type'] ) ? esc_attr( $args['type'] ) : 'text';
 			$output = sprintf(
@@ -89,7 +89,7 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
 			);
 			break;
 
-		// Textarea
+		// Textarea.
 		case 'textarea':
 			$rows   = ! empty( $args['rows'] ) ? (int) $args['rows'] : '3';
 			$output = sprintf(
@@ -105,7 +105,7 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
 			);
 			break;
 
-		// TinyMCE
+		// TinyMCE.
 		case 'tinymce':
 			$args                  = wp_parse_args( $args['tinymce'], array(
 				'media_buttons' => false,
@@ -120,7 +120,7 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
 			$output = ob_get_clean();
 			break;
 
-		// Checkbox
+		// Checkbox.
 		case 'checkbox':
 			$checked = checked( '1', $value, false );
 			$output  = sprintf(
@@ -132,7 +132,7 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
 				$checked,
 				$data_attr
 			);
-			$output  .= sprintf(
+			$output .= sprintf(
 				'<label for="wpforms-panel-field-%s-%s" class="inline">%s',
 				sanitize_html_class( $panel_id ),
 				sanitize_html_class( $field ),
@@ -144,7 +144,7 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
 			$output .= '</label>';
 			break;
 
-		// Radio
+		// Radio.
 		case 'radio':
 			$options = $args['options'];
 			$x       = 1;
@@ -154,7 +154,7 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
 					continue;
 				}
 				$checked = checked( $key, $value, false );
-				$output  .= sprintf(
+				$output .= sprintf(
 					'<span class="row"><input type="radio" id="wpforms-panel-field-%s-%s-%d" name="%s" value="%s" class="%s" %s %s>',
 					sanitize_html_class( $panel_id ),
 					sanitize_html_class( $field ),
@@ -165,7 +165,7 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
 					$checked,
 					$data_attr
 				);
-				$output  .= sprintf(
+				$output .= sprintf(
 					'<label for="wpforms-panel-field-%s-%s-%d" class="inline">%s',
 					sanitize_html_class( $panel_id ),
 					sanitize_html_class( $field ),
@@ -180,7 +180,7 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
 			}
 			break;
 
-		// Select
+		// Select.
 		case 'select':
 			if ( empty( $args['options'] ) && empty( $args['field_map'] ) ) {
 				return '';
@@ -191,7 +191,7 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
 				$available_fields = wpforms_get_form_fields( $form_data, $args['field_map'] );
 				if ( ! empty( $available_fields ) ) {
 					foreach ( $available_fields as $id => $available_field ) {
-						$lbl            = ! empty( $available_field['label'] ) ? esc_attr( $available_field['label'] ) : __( 'Field #' ) . $id;
+						$lbl            = ! empty( $available_field['label'] ) ? esc_attr( $available_field['label'] ) : esc_html__( 'Field #' ) . $id;
 						$options[ $id ] = $lbl;
 					}
 				}
@@ -225,8 +225,8 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
 			break;
 	}
 
-	// Put the pieces together....
-	$field_open = sprintf(
+	// Put the pieces together.
+	$field_open  = sprintf(
 		'<div id="wpforms-panel-field-%s-%s-wrap" class="wpforms-panel-field %s %s">',
 		sanitize_html_class( $panel_id ),
 		sanitize_html_class( $field ),
@@ -252,15 +252,15 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
 			$type   = ! empty( $args['smarttags']['type'] ) ? esc_attr( $args['smarttags']['type'] ) : 'fields';
 			$fields = ! empty( $args['smarttags']['fields'] ) ? esc_attr( $args['smarttags']['fields'] ) : '';
 
-			$field_label .= '<a href="#" class="toggle-smart-tag-display" data-type="' . $type . '" data-fields="' . $fields . '"><i class="fa fa-tags"></i> <span>' . __( 'Show Smart Tags', 'wpforms' ) . '</span></a>';
+			$field_label .= '<a href="#" class="toggle-smart-tag-display" data-type="' . $type . '" data-fields="' . $fields . '"><i class="fa fa-tags"></i> <span>' . esc_html__( 'Show Smart Tags', 'wpforms' ) . '</span></a>';
 		}
 		$field_label .= '</label>';
 	} else {
 		$field_label = '';
 	}
-	$field_close = ! empty( $args['after'] ) ? $args['after'] : '';
+	$field_close  = ! empty( $args['after'] ) ? $args['after'] : '';
 	$field_close .= '</div>';
-	$output      = $field_open . $field_label . $output . $field_close;
+	$output       = $field_open . $field_label . $output . $field_close;
 
 	// Wash our hands.
 	if ( $echo ) {

@@ -172,7 +172,7 @@
 							if ( $args['remote_get_successful'] ) {
 								echo '<mark class="yes"><span class="dashicons dashicons-yes"></span></mark>';
 							} else {
-								echo '<mark class="error"><span class="dashicons dashicons-warning"></span> ' . sprintf( __( 'wp_remote_get() failed. Contact your hosting provider with error: <code>%s</code>', 'thim-core' ), esc_html( $args['remote_get_response'] ) ) . '</mark>';
+								echo '<mark class="error"><span class="dashicons dashicons-warning"></span> ' . sprintf( __( 'wp_remote_get() failed. Contact your hosting provider with error: <code>%s</code></br> URL: <code>%s</code>', 'thim-core' ), esc_html( $args['remote_get_response'] ), esc_url( $args['remote_get_test_url'] ) ) . '</mark>';
 							}
 							?>
                         </td>

@@ -975,6 +975,7 @@ class mo_openid_sharing_ver_wid extends WP_Widget {
 			$decrypted_user_name = isset($_POST['username']) ? mo_openid_decrypt_sanitize($_POST['username']): '';
 			$decrypted_user_picture = isset($_POST['profilePic']) ? mo_openid_decrypt_sanitize($_POST['profilePic']): '';
 			$decrypted_user_url = isset($_POST['profileUrl']) ? mo_openid_decrypt_sanitize($_POST['profileUrl']): '';
+			$decrypted_user_url = urldecode($decrypted_user_url);
 			$decrypted_first_name = isset($_POST['firstName']) ? mo_openid_decrypt_sanitize($_POST['firstName']): '';
 			$decrypted_last_name = isset($_POST['lastName']) ? mo_openid_decrypt_sanitize($_POST['lastName']): '';
 			$decrypted_app_name = isset($_POST['appName']) ? mo_openid_decrypt_sanitize($_POST['appName']): '';
@@ -1008,151 +1009,151 @@ class mo_openid_sharing_ver_wid extends WP_Widget {
 			
 			//if email or username not returned from app
 			if ( empty($decrypted_email) || empty($decrypted_user_name) )
-			{
+			{	
 			
 				if( empty($decrypted_app_name) || empty($decrypted_user_id)){
 					wp_die('There was an error during login. Please try to login manually.');
 				}		
 				else
 				{
-					//check if provider + identifier group exists
-					global $wpdb;
-					$id_returning_user = $wpdb->get_var($wpdb->prepare("SELECT ID FROM $wpdb->users where provider = %s AND identifier = %s",$decrypted_app_name,$decrypted_user_id));
+				//check if provider + identifier group exists
+				global $wpdb;
+				$id_returning_user = $wpdb->get_var($wpdb->prepare("SELECT ID FROM $wpdb->users where provider = %s AND identifier = %s",$decrypted_app_name,$decrypted_user_id));
+				
+				mo_openid_start_session();
+				
+				// if returning user whose appname + identifier exists, log him in
+				if(isset($id_returning_user))
+				{
+					$user 	= get_user_by('id', $id_returning_user );
+					if(get_option('moopenid_social_login_avatar') && isset($user_picture))
+						update_user_meta($id_returning_user, 'moopenid_user_avatar', $user_picture);
+					$_SESSION['mo_login'] = true;
+					do_action( 'miniorange_collect_attributes_for_authenticated_user', $user, mo_openid_get_redirect_url());
+					do_action( 'wp_login', $user->user_login, $user );
+					wp_set_auth_cookie( $id_returning_user, true );
+				}
+				// if new user and profile completion is enabled
+				elseif (get_option('mo_openid_enable_profile_completion')){
 					
-					mo_openid_start_session();
+					$path = site_url();
+					$path .= '/wp-admin/load-styles.php?c=1&amp;dir=ltr&amp;load%5B%5D=dashicons,buttons,forms,l10n,login&amp;ver=4.8.1';
+					echo mo_openid_profile_completion_form($path, $last_name, $first_name, $user_full_name, $user_url, $user_picture, $decrypted_user_name, $decrypted_email, $decrypted_app_name, $decrypted_user_id);
+					exit;
+				}
+				// if new user and profile completion is disabled, auto create dummy data and register user
+ 				else
+				{	
+					// auto registration is enabled
+					if(get_option('mo_openid_auto_register_enable')) {
+						
+						if(!empty($decrypted_email))
+						{   
+							$split_email = array();
+							$split_email  = explode('@',$decrypted_email);
+							$username = $split_email[0];
+							$user_email = $decrypted_email;  
+						}
+						else if(!empty($decrypted_user_name))
+						{	
+							$split_app_name = array();
+							$split_app_name = explode('_',$decrypted_app_name);
+							$username = $decrypted_user_name;
+							$user_email = $decrypted_user_name.'@'.$split_app_name[0].'.com';
+						}
+						else
+						{
+							$split_app_name = array();
+							$split_app_name = explode('_',$decrypted_app_name);						
+							$username = 'user_'.get_option('mo_openid_user_count');
+							$user_email =  'user_'.get_option('mo_openid_user_count').'@'.$split_app_name[0].'.com';
+							//update_option('mo_openid_user_count',get_option('mo_openid_user_count')+1); update only if user is successfully created
+						}						
+						
+						
+						$random_password 	= wp_generate_password( 10, false );
+						
+						$userdata = array(
+											'user_login'  =>  $username,
+											'user_email'    =>  $user_email,
+											'user_pass'   =>  $random_password,
+											'display_name' => $user_full_name,
+											'first_name' => $first_name,
+											'last_name' => $last_name,
+											'user_url' => $user_url,
+										);
+						
+						  
+						$user_id 	= wp_insert_user( $userdata); 
+						
+						if(is_wp_error( $user_id )) {
+							//print_r($user_id);
+							wp_die('There was an error in registration. Please contact your administrator.');
+						}
 					
-					// if returning user whose appname + identifier exists, log him in
-					if(isset($id_returning_user))
-					{
-						$user 	= get_user_by('id', $id_returning_user );
-						if(get_option('moopenid_social_login_avatar') && isset($user_picture))
-							update_user_meta($id_returning_user, 'moopenid_user_avatar', $user_picture);
+						update_option('mo_openid_user_count',get_option('mo_openid_user_count')+1);
+						// run the query to add provider and identifier for the user
+						$table_name = $wpdb->prefix . 'users';
+						
+						$provider_column = 'provider';
+						$identifier_column = 'identifier';
+						
+						$row = $wpdb->get_results("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = ".$table_name." AND column_name = ".$provider_column);
+						if(empty($row)){
+						   $wpdb->query("ALTER TABLE ".$table_name." ADD ".$provider_column." VARCHAR(20) NOT NULL ");
+						}
+						
+						$row = $wpdb->get_results("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = ".$table_name." AND column_name = ".$identifier_column);
+						if(empty($row)){
+						   $wpdb->query("ALTER TABLE ".$table_name." ADD ".$identifier_column." VARCHAR(100) NOT NULL ");
+						}						
+						
+						$result = $wpdb->update( 
+									$table_name, 
+									array( 
+										'provider' => $decrypted_app_name,	// string
+										'identifier' => $decrypted_user_id	// string  
+									), 
+									array( 'ID' => $user_id ), 
+									array( 
+										'%s',	// value1
+										'%s'	// value2
+									), 
+									array( '%d' ) 
+								);	
+
+						if($result === false)
+						{
+							//$wpdb->show_errors();
+							//$wpdb->print_error();
+							//exit;	
+							wp_die('Error in update query');
+						}
+					
+						$user	= get_user_by('email', $user_email );
+						if(get_option('mo_openid_login_role_mapping') && mo_openid_is_customer_valid()){
+							$user->set_role( get_option('mo_openid_login_role_mapping') );
+						}
+						if(get_option('moopenid_social_login_avatar') && isset($user_picture)){
+							update_user_meta($user_id, 'moopenid_user_avatar', $user_picture);
+						}
 						$_SESSION['mo_login'] = true;
+						
+						//registration hook
+						do_action( 'mo_user_register', $user_id);
+						//login hook
 						do_action( 'miniorange_collect_attributes_for_authenticated_user', $user, mo_openid_get_redirect_url());
 						do_action( 'wp_login', $user->user_login, $user );
-						wp_set_auth_cookie( $id_returning_user, true );
-					}
-					// if new user and profile completion is enabled
-					elseif (get_option('mo_openid_enable_profile_completion')){
-						
-						$path = site_url();
-						$path .= '/wp-admin/load-styles.php?c=1&amp;dir=ltr&amp;load%5B%5D=dashicons,buttons,forms,l10n,login&amp;ver=4.8.1';
-						echo mo_openid_profile_completion_form($path, $last_name, $first_name, $user_full_name, $user_url, $user_picture, $decrypted_user_name, $decrypted_email, $decrypted_app_name, $decrypted_user_id);
-						exit;
-					}
-					// if new user and profile completion is disabled, auto create dummy data and register user
-					else
-					{	
-						// auto registration is enabled
-						if(get_option('mo_openid_auto_register_enable')) {
-							
-							if(!empty($decrypted_email))
-							{   
-								$split_email = array();
-								$split_email  = explode('@',$decrypted_email);
-								$username = $split_email[0];
-								$user_email = $decrypted_email;  
-							}
-							else if(!empty($decrypted_user_name))
-							{	
-								$split_app_name = array();
-								$split_app_name = explode('_',$decrypted_app_name);
-								$username = $decrypted_user_name;
-								$user_email = $decrypted_user_name.'@'.$split_app_name[0].'.com';
-							}
-							else
-							{
-								$split_app_name = array();
-								$split_app_name = explode('_',$decrypted_app_name);						
-								$username = 'user_'.get_option('mo_openid_user_count');
-								$user_email =  'user_'.get_option('mo_openid_user_count').'@'.$split_app_name[0].'.com';
-								//update_option('mo_openid_user_count',get_option('mo_openid_user_count')+1); update only if user is successfully created
-							}						
-							
-							
-							$random_password 	= wp_generate_password( 10, false );
-							
-							$userdata = array(
-												'user_login'  =>  $username,
-												'user_email'    =>  $user_email,
-												'user_pass'   =>  $random_password,
-												'display_name' => $user_full_name,
-												'first_name' => $first_name,
-												'last_name' => $last_name,
-												'user_url' => $user_url,
-											);
-							
-							  
-							$user_id 	= wp_insert_user( $userdata); 
-							
-							if(is_wp_error( $user_id )) {
-								//print_r($user_id);
-								wp_die('There was an error in registration. Please contact your administrator.');
-							}
-						
-							update_option('mo_openid_user_count',get_option('mo_openid_user_count')+1);
-							// run the query to add provider and identifier for the user
-							$table_name = $wpdb->prefix . 'users';
-							
-							$provider_column = 'provider';
-							$identifier_column = 'identifier';
-							
-							$row = $wpdb->get_results("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = ".$table_name." AND column_name = ".$provider_column);
-							if(empty($row)){
-							   $wpdb->query("ALTER TABLE ".$table_name." ADD ".$provider_column." VARCHAR(20) NOT NULL ");
-							}
-							
-							$row = $wpdb->get_results("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = ".$table_name." AND column_name = ".$identifier_column);
-							if(empty($row)){
-							   $wpdb->query("ALTER TABLE ".$table_name." ADD ".$identifier_column." VARCHAR(100) NOT NULL ");
-							}						
-							
-							$result = $wpdb->update( 
-										$table_name, 
-										array( 
-											'provider' => $decrypted_app_name,	// string
-											'identifier' => $decrypted_user_id	// string  
-										), 
-										array( 'ID' => $user_id ), 
-										array( 
-											'%s',	// value1
-											'%s'	// value2
-										), 
-										array( '%d' ) 
-									);	
-
-							if($result === false)
-							{
-								//$wpdb->show_errors();
-								//$wpdb->print_error();
-								//exit;	
-								wp_die('Error in update query');
-							}
-						
-							$user	= get_user_by('email', $user_email );
-							if(get_option('mo_openid_login_role_mapping') && mo_openid_is_customer_valid()){
-								$user->set_role( get_option('mo_openid_login_role_mapping') );
-							}
-							if(get_option('moopenid_social_login_avatar') && isset($user_picture)){
-								update_user_meta($user_id, 'moopenid_user_avatar', $user_picture);
-							}
-							$_SESSION['mo_login'] = true;
-							
-							//registration hook
-							do_action( 'mo_user_register', $user_id);
-							//login hook
-							do_action( 'miniorange_collect_attributes_for_authenticated_user', $user, mo_openid_get_redirect_url());
-							do_action( 'wp_login', $user->user_login, $user );
-							wp_set_auth_cookie( $user_id, true );
-					}
-					
-					$redirect_url = mo_openid_get_redirect_url();
-					wp_redirect($redirect_url);
-					exit;
-						
-					}
-
+						wp_set_auth_cookie( $user_id, true );
 				}
+				
+				$redirect_url = mo_openid_get_redirect_url();
+				wp_redirect($redirect_url);
+				exit;
+					
+				}
+
+			}
 					
 				
 			}
@@ -1637,5 +1638,81 @@ add_action( 'init', 'mo_openid_login_validate' );
 //add_action( 'init', 'mo_openid_start_session' );
 //add_action( 'wp_logout', 'mo_openid_end_session' );
 add_action( 'wp_login', 'mo_openid_login_redirect', 9, 2);
+add_filter('sanitize_user', 'mo_openid_sanitize_user', 10, 3);
+remove_filter('sanitize_title','sanitize_title_with_dashes', 10);
+add_filter( 'sanitize_title', 'mo_openid_sanitize_title_with_dashes', 10, 3 );
+
+	function mo_openid_sanitize_user($username, $raw_username, $strict) { 
+		
+		$username = wp_strip_all_tags( $raw_username );
+		$username = remove_accents( $username );
+		// Kill octets
+		$username = preg_replace( '|%([a-fA-F0-9][a-fA-F0-9])|', '', $username );
+		$username = preg_replace( '/&.+?;/', '', $username ); // Kill entities
+		// If strict, reduce to ASCII and Cyrillic characters for max portability.
+		if ( $strict )
+		$username = preg_replace( '|[^a-zあ-ん\p{Han}а-я0-9ㅂㅈㄷㄱ쇼ㅕㅑㅐㅔㅁㄴㅇㄹ호ㅓㅏㅣㅋㅌㅊ퓨ㅜㅡㅃㅉㄸㄲ썌ㅖ _.\-@]|iu', '', $username );
+		$username = trim( $username );
+		// Consolidate contiguous whitespace
+		$username = preg_replace( '|\s+|', ' ', $username );
+		return $username;
+	}
+
+	function mo_openid_sanitize_title_with_dashes( $title, $raw_title = '', $context = 'display' ) {
+		
+		$title = strip_tags($raw_title);
+		// Preserve escaped octets.
+		$title = preg_replace('|%([a-fA-F0-9][a-fA-F0-9])|', '---$1---', $title);
+		// Remove percent signs that are not part of an octet.
+		$title = str_replace('%', '', $title);
+		// Restore octets.
+		$title = preg_replace('|---([a-fA-F0-9][a-fA-F0-9])---|', '%$1', $title);
+		if (seems_utf8($title)) {
+			if (function_exists('mb_strtolower')) {
+				$title = mb_strtolower($title, 'UTF-8');
+			}
+		}
+
+		$title = strtolower($title);
+
+		if ( 'save' == $context ) {
+			// Convert nbsp, ndash and mdash to hyphens
+			$title = str_replace( array( '%c2%a0', '%e2%80%93', '%e2%80%94' ), '-', $title );
+			// Convert nbsp, ndash and mdash HTML entities to hyphens
+			$title = str_replace( array( '&nbsp;', '&#160;', '&ndash;', '&#8211;', '&mdash;', '&#8212;' ), '-', $title );
+			// Convert forward slash to hyphen
+			$title = str_replace( '/', '-', $title );
+
+			// Strip these characters entirely
+			$title = str_replace( array(
+				// iexcl and iquest
+				'%c2%a1', '%c2%bf',
+				// angle quotes
+				'%c2%ab', '%c2%bb', '%e2%80%b9', '%e2%80%ba',
+				// curly quotes
+				'%e2%80%98', '%e2%80%99', '%e2%80%9c', '%e2%80%9d',
+				'%e2%80%9a', '%e2%80%9b', '%e2%80%9e', '%e2%80%9f',
+				// copy, reg, deg, hellip and trade
+				'%c2%a9', '%c2%ae', '%c2%b0', '%e2%80%a6', '%e2%84%a2',
+				// acute accents
+				'%c2%b4', '%cb%8a', '%cc%81', '%cd%81',
+				// grave accent, macron, caron
+				'%cc%80', '%cc%84', '%cc%8c',
+			), '', $title );
+			// Convert times to x
+			$title = str_replace( '%c3%97', 'x', $title );
+		}
+
+		$title = preg_replace('/&.+?;/', '', $title); // kill entities
+		$title = str_replace('.', '-', $title);
+
+		//$title = preg_replace('/[^%a-z0-9 _-]/', '', $title);
+		$title = preg_replace( '|[^a-zあ-ん\p{Han}а-я0-9ㅂㅈㄷㄱ쇼ㅕㅑㅐㅔㅁㄴㅇㄹ호ㅓㅏㅣㅋㅌㅊ퓨ㅜㅡㅃㅉㄸㄲ썌ㅖ _.\-@]|iu', '', $title );
+		$title = preg_replace('/\s+/', '-', $title);
+		$title = preg_replace('|-+|', '-', $title);
+		$title = trim($title, '-');
+
+		return $title;
+	}
 }
 ?>

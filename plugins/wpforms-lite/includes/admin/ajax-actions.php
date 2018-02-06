@@ -16,15 +16,15 @@
  */
 function wpforms_save_form() {
 
-	// Run a security check
+	// Run a security check.
 	check_ajax_referer( 'wpforms-builder', 'nonce' );
 
-	// Check for permissions
-	if ( ! current_user_can( apply_filters( 'wpforms_manage_cap', 'manage_options' ) ) ) {
+	// Check for permissions.
+	if ( ! wpforms_current_user_can() ) {
 		die( __( 'You do not have permission.', 'wpforms' ) );
 	}
 
-	// Check for form data
+	// Check for form data.
 	if ( empty( $_POST['data'] ) ) {
 		die( __( 'No data provided', 'wpforms' ) );
 	}
@@ -87,7 +87,7 @@ add_action( 'wp_ajax_wpforms_save_form', 'wpforms_save_form' );
  */
 function wpforms_new_form() {
 
-	// Run a security check
+	// Run a security check.
 	check_ajax_referer( 'wpforms-builder', 'nonce' );
 
 	// Check for form name.
@@ -95,7 +95,7 @@ function wpforms_new_form() {
 		die( __( 'No form name provided', 'wpforms' ) );
 	}
 
-	// Create form
+	// Create form.
 	$form_title    = sanitize_text_field( $_POST['title'] );
 	$form_template = sanitize_text_field( $_POST['template'] );
 	$title_exists  = get_page_by_title( $form_title, 'OBJECT', 'wpforms' );
@@ -187,7 +187,7 @@ function wpforms_builder_increase_next_field_id() {
 	check_ajax_referer( 'wpforms-builder', 'nonce' );
 
 	// Check for permissions.
-	if ( ! current_user_can( apply_filters( 'wpforms_manage_cap', 'manage_options' ) ) ) {
+	if ( ! wpforms_current_user_can() ) {
 		wp_send_json_error();
 	}
 
@@ -216,7 +216,7 @@ function wpforms_builder_dynamic_choices() {
 	check_ajax_referer( 'wpforms-builder', 'nonce' );
 
 	// Check for permissions.
-	if ( ! current_user_can( apply_filters( 'wpforms_manage_cap', 'manage_options' ) ) ) {
+	if ( ! wpforms_current_user_can() ) {
 		wp_send_json_error();
 	}
 
@@ -228,7 +228,7 @@ function wpforms_builder_dynamic_choices() {
 	$type = esc_attr( $_POST['type'] );
 	$id   = absint( $_POST['field_id'] );
 
-	// Fetch the option row HTML to be returned to the builder
+	// Fetch the option row HTML to be returned to the builder.
 	$field      = new WPForms_Field_Select( false );
 	$field_args = array(
 		'id'              => $id,
@@ -258,7 +258,7 @@ function wpforms_builder_dynamic_source() {
 	check_ajax_referer( 'wpforms-builder', 'nonce' );
 
 	// Check for permissions.
-	if ( ! current_user_can( apply_filters( 'wpforms_manage_cap', 'manage_options' ) ) ) {
+	if ( ! wpforms_current_user_can() ) {
 		wp_send_json_error();
 	}
 
@@ -342,6 +342,7 @@ function wpforms_builder_dynamic_source() {
 		)
 	);
 }
+
 add_action( 'wp_ajax_wpforms_builder_dynamic_source', 'wpforms_builder_dynamic_source' );
 
 /**
@@ -354,11 +355,10 @@ function wpforms_tools_import_form() {
 	// Run a security check.
 	check_ajax_referer( 'wpforms-admin', 'nonce' );
 
-	// // Check for permissions.
-	if ( ! current_user_can( apply_filters( 'wpforms_manage_cap', 'manage_options' ) ) ) {
+	// Check for permissions.
+	if ( ! wpforms_current_user_can() ) {
 		wp_send_json_error();
 	}
-
-	// stuff
 }
+
 add_action( 'wp_ajax_wpforms_tools_import_form', 'wpforms_tools_import_form' );

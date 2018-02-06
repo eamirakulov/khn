@@ -158,6 +158,7 @@ class Thim_System_Status extends Thim_Admin_Sub_Page {
 			if ( $response['return'] ) {
 				$response = thim_core_test_request( Thim_Admin_Config::get( 'host_downloads' ) . '/ping/' );
 			}
+			$info['remote_get_test_url']   = $response['url'];
 			$info['remote_get_successful'] = $response['return'];
 			$info['remote_get_response']   = $response['message'];
 

@@ -90,7 +90,7 @@ abstract class WPForms_Template {
 	 */
 	public function __construct() {
 
-		// Bootstrap
+		// Bootstrap.
 		$this->init();
 
 		$type = $this->core ? '_core' : '';
@@ -118,7 +118,7 @@ abstract class WPForms_Template {
 	 *
 	 * @return array
 	 */
-	function template_details( $templates ) {
+	public function template_details( $templates ) {
 
 		$templates[] = array(
 			'name'        => $this->name,
@@ -141,7 +141,7 @@ abstract class WPForms_Template {
 	 *
 	 * @return array
 	 */
-	function template_data( $args, $data ) {
+	public function template_data( $args, $data ) {
 
 		if ( ! empty( $data ) && ! empty( $data['template'] ) ) {
 			if ( $data['template'] === $this->slug ) {
@@ -163,7 +163,7 @@ abstract class WPForms_Template {
 	 *
 	 * @return array
 	 */
-	function template_replace( $form, $data, $args ) {
+	public function template_replace( $form, $data, $args ) {
 
 		if ( ! empty( $args['template'] ) ) {
 			if ( $args['template'] === $this->slug ) {
@@ -186,7 +186,7 @@ abstract class WPForms_Template {
 	 *
 	 * @return array
 	 */
-	function template_active( $details, $form ) {
+	public function template_active( $details, $form ) {
 
 		if ( empty( $form ) ) {
 			return;
@@ -223,7 +223,7 @@ abstract class WPForms_Template {
 	 *
 	 * @return boolean
 	 */
-	function template_modal_conditional( $form_data ) {
+	public function template_modal_conditional( $form_data ) {
 
 		return false;
 	}

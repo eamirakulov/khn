@@ -18,23 +18,23 @@ class WPForms_Field_Radio extends WPForms_Field {
 	public function init() {
 
 		// Define field type information.
-		$this->name     = __( 'Multiple Choice', 'wpforms' );
+		$this->name     = esc_html__( 'Multiple Choice', 'wpforms' );
 		$this->type     = 'radio';
 		$this->icon     = 'fa-list-ul';
 		$this->order    = 11;
 		$this->defaults = array(
 			1 => array(
-				'label'   => __( 'First Choice', 'wpforms' ),
+				'label'   => esc_html__( 'First Choice', 'wpforms' ),
 				'value'   => '',
 				'default' => '',
 			),
 			2 => array(
-				'label'   => __( 'Second Choice', 'wpforms' ),
+				'label'   => esc_html__( 'Second Choice', 'wpforms' ),
 				'value'   => '',
 				'default' => '',
 			),
 			3 => array(
-				'label'   => __( 'Third Choice', 'wpforms' ),
+				'label'   => esc_html__( 'Third Choice', 'wpforms' ),
 				'value'   => '',
 				'default' => '',
 			),
@@ -85,6 +85,26 @@ class WPForms_Field_Radio extends WPForms_Field {
 			'markup' => 'open',
 		) );
 
+		// Randomize order of choices.
+		$this->field_element(
+			'row',
+			$field,
+			array(
+				'slug'    => 'random',
+				'content' => $this->field_element(
+					'checkbox',
+					$field,
+					array(
+						'slug'    => 'random',
+						'value'   => isset( $field['random'] ) ? '1' : '0',
+						'desc'    => esc_html__( 'Randomize Choices', 'wpforms' ),
+						'tooltip' => esc_html__( 'Check this option to randomize the order of the choices.', 'wpforms' ),
+					),
+					false
+				),
+			)
+		);
+
 		// Show Values toggle option. This option will only show if already used
 		// or if manually enabled by a filter.
 		if ( ! empty( $field['show_values'] ) || apply_filters( 'wpforms_fields_show_options_setting', false ) ) {
@@ -94,8 +114,8 @@ class WPForms_Field_Radio extends WPForms_Field {
 				array(
 					'slug'    => 'show_values',
 					'value'   => isset( $field['show_values'] ) ? $field['show_values'] : '0',
-					'desc'    => __( 'Show Values', 'wpforms' ),
-					'tooltip' => __( 'Check this to manually set form field values.', 'wpforms' ),
+					'desc'    => esc_html__( 'Show Values', 'wpforms' ),
+					'tooltip' => esc_html__( 'Check this to manually set form field values.', 'wpforms' ),
 				),
 				false
 			);
@@ -191,7 +211,7 @@ class WPForms_Field_Radio extends WPForms_Field {
 			// Notify if currently empty.
 			if ( empty( $values ) ) {
 				$values = array(
-					'label' => __( '(empty)', 'wpforms' ),
+					'label' => esc_html__( '(empty)', 'wpforms' ),
 				);
 			}
 
@@ -209,7 +229,8 @@ class WPForms_Field_Radio extends WPForms_Field {
 		// Dynamic population is enabled and contains more than 20 items.
 		if ( isset( $total ) && $total > 20 ) {
 			echo '<div class="wpforms-alert-dynamic wpforms-alert wpforms-alert-warning">';
-				printf( __( 'Showing the first 20 choices.<br> All %d choices will be displayed when viewing the form.', 'wpforms' ), absint( $total ) );
+				/* translators: %d - total number of choices. */
+				printf( wp_kses( __( 'Showing the first 20 choices.<br> All %d choices will be displayed when viewing the form.', 'wpforms' ), array( 'br' => array() ) ), absint( $total ) );
 			echo '</div>';
 		}
 
@@ -237,6 +258,7 @@ class WPForms_Field_Radio extends WPForms_Field {
 		$form_id           = absint( $form_data['id'] );
 		$dynamic           = ! empty( $field['dynamic_choices'] ) ? $field['dynamic_choices'] : false;
 		$choices           = $field['choices'];
+		$randomize         = ! empty( $field['random'] ) ? 'wpforms-randomize' : '';
 
 		if ( ! empty( $field_atts['input_data'] ) ) {
 			foreach ( $field_atts['input_data'] as $key => $val ) {
@@ -295,7 +317,7 @@ class WPForms_Field_Radio extends WPForms_Field {
 		}
 
 		// List.
-		printf( '<ul id="%s" class="%s" %s>', $field_id, $field_class, $field_data );
+		printf( '<ul id="%s" class="%s %s" %s>', $field_id, $field_class, $randomize, $field_data );
 
 			foreach ( $choices as $key => $choice ) {
 
@@ -372,8 +394,9 @@ class WPForms_Field_Radio extends WPForms_Field {
 				$data['value'] = esc_html( $term->name );
 			}
 		} else {
-
-			// Normal processing, dynamic population is off.
+			/*
+			 * Normal processing, dynamic population is off.
+			 */
 
 			// If show_values is true, that means values posted are the raw values
 			// and not the labels. So we need to get the label values.

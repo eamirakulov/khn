@@ -59,6 +59,7 @@ class WPForms_Fields {
 			'date-time',
 			'number',
 			'page-break',
+			'rating',
 			'file-upload',
 			'payment-single',
 			'payment-multiple',

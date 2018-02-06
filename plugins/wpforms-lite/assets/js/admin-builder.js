@@ -851,6 +851,74 @@
 				e.preventDefault();
 				WPFormsBuilder.fieldLayoutSelectorInsert(this);
 			});
+
+			// Real-time updates for Rating field scale option.
+			$( document ).on( 'change', '.wpforms-field-option-row-scale select', function() {
+
+				var $this  = $( this ),
+					value  = $this.val(),
+					id     = $this.parent().data( 'field-id' ),
+					$icons = $( '#wpforms-field-'+id +' .rating-icon' ),
+					x      = 1;
+
+				$icons.each( function( index ) {;
+					if ( x <= value ) {
+						$( this ).show();
+					} else {
+						$( this ).hide();
+					}
+					x++;
+				});
+			});
+
+			// Real-time updates for Rating field icon option.
+			$( document ).on( 'change', '.wpforms-field-option-row-icon select', function() {
+
+				var $this     = $( this ),
+					value     = $this.val(),
+					id        = $this.parent().data( 'field-id' ),
+					$icons    = $( '#wpforms-field-'+id +' .rating-icon' ),
+					iconClass = 'fa-star';
+
+				if ( 'heart' === value ) {
+					iconClass = 'fa-heart';
+				} else if ( 'thumb' === value ) {
+					iconClass = 'fa-thumbs-up';
+				} else if ( 'smiley' === value ) {
+					iconClass = 'fa-smile-o';
+				}
+
+				$icons.removeClass( 'fa-star fa-heart fa-thumbs-up fa-smile-o' ).addClass( iconClass );
+			});
+
+			// Real-time updates for Rating field icon size option.
+			$( document ).on( 'change', '.wpforms-field-option-row-icon_size select', function() {
+
+				var $this     = $( this ),
+					value     = $this.val(),
+					id        = $this.parent().data( 'field-id' ),
+					$icons    = $( '#wpforms-field-'+id +' .rating-icon' );
+					fontSize  = '28';
+
+				if ( 'small' === value ) {
+					fontSize = '18';
+				} else if ( 'large' === value ) {
+					fontSize = '38';
+				}
+
+				$icons.css( 'font-size', fontSize + 'px' );
+			});
+
+			// Real-time updates for Rating field icon color option.
+			$( document ).on( 'input', '.wpforms-field-option-row-icon_color input.wpforms-color-picker', function() {
+
+				var $this     = $( this ),
+					value     = $this.val(),
+					id        = $this.closest( '.wpforms-field-option-row' ).data( 'field-id' ),
+					$icons    = $( '#wpforms-field-'+id +' i.fa' );
+
+				$icons.css( 'color', value );
+			});
 		},
 
 		/**

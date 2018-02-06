@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-01-28 23:06+0000\n"
-"PO-Revision-Date: 2018-01-29 00:12+0000\n"
+"PO-Revision-Date: 2018-02-05 10:06+0000\n"
 "Last-Translator: admin <emil@amirakulov.com>\n"
 "Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
@@ -27,12 +27,6 @@ msgstr ""
 #, php-format
 msgid "Showing last post of %s results"
 msgstr ""
-
-#: content-none.php:28
-msgid ""
-"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
-"searching can help."
-msgstr "Не найдено, повторите поиск"
 
 #: buddypress/activity/index.php:147
 msgid "RSS"
@@ -97,16 +91,6 @@ msgstr ""
 #, php-format
 msgid "Customers in %s will be charged %s%% tax."
 msgstr ""
-
-#: inc/learnpress-v2-functions.php:1199
-#: xxx/learnpress/inc/user/lp-user-functions.php:947
-msgid "You have already finished course"
-msgstr "Вы уже закончили этот курс"
-
-#: inc/learnpress-v2-functions.php:1202
-#: xxx/learnpress/inc/user/lp-user-functions.php:950
-msgid "You have already enrolled in this course"
-msgstr "Вы уже записались на этот курс"
 
 #: inc/template-tags.php:42 xxx/learnpress/inc/lp-core-functions.php:657
 msgid "<"
@@ -463,11 +447,6 @@ msgstr ""
 msgid "Use captcha in register and login form"
 msgstr ""
 
-#: inc/widgets/login-form/tpl/base.php:203
-#: inc/widgets/login-popup/tpl/base.php:58
-msgid "Remember Me"
-msgstr "Запомнить меня"
-
 #: inc/widgets/multiple-images/multiple-images.php:45
 #: vc-shortcodes/inc-map/course-categories.php:76
 #: vc-shortcodes/inc-map/courses-collection.php:33
@@ -707,124 +686,6 @@ msgstr ""
 msgid "Popup Settings"
 msgstr ""
 
-#: xxx/learnpress/inc/class-lp-ajax.php:89
-msgid "Upload profile avatar error."
-msgstr "Ошибка"
-
-#: xxx/learnpress/inc/class-lp-ajax.php:132
-msgid "Invalid course"
-msgstr "Неверный курс"
-
-#: xxx/learnpress/inc/class-lp-ajax.php:144
-#, php-format
-msgid "You have enrolled in this course <strong>%s</strong>"
-msgstr "Вы записались на этот курс"
-
-#: xxx/learnpress/inc/class-lp-ajax.php:147
-#, php-format
-msgid ""
-"Sorry! The course <strong>%s</strong> you want to enroll has failed! Please "
-"contact site's administrator for more information."
-msgstr ""
-"Извините, вы не можете записаться на данный курс. Обратитесь к администрации "
-"сайта."
-
-#: xxx/learnpress/inc/class-lp-ajax.php:173
-msgid "Please enter username"
-msgstr "Введите имя пользователя"
-
-#: xxx/learnpress/inc/class-lp-ajax.php:177
-msgid "Please enter password"
-msgstr "Введите пароль"
-
-#: xxx/learnpress/inc/class-lp-ajax.php:225
-msgid "Please enter your username and/or password"
-msgstr "Введите логин\\пароль"
-
-#: xxx/learnpress/inc/class-lp-ajax.php:243
-#, php-format
-msgid "Welcome back, %s. You've already enrolled this course"
-msgstr "Добро пожаловать, %s. Вы уже записались на этот курс."
-
-#: xxx/learnpress/inc/class-lp-ajax.php:255
-#, php-format
-msgid "Welcome back, %s! Redirecting..."
-msgstr "Добро пожаловать, %s. Перенаправляем..."
-
-#: xxx/learnpress/inc/class-lp-ajax.php:291
-msgid "Access denied!"
-msgstr "Нет доступа"
-
-#: xxx/learnpress/inc/class-lp-ajax.php:299
-#, php-format
-msgid "You have finished this course \"%s\""
-msgstr "Вы окончили этот курс"
-
-#: xxx/learnpress/inc/class-lp-ajax.php:304
-msgid ""
-"Error! You cannot finish this course. Please contact your administrator for "
-"more information."
-msgstr ""
-"Ошибка! Вы не можете окончить этот курс. Обратитесь к администрации сайта."
-
-#: xxx/learnpress/inc/class-lp-ajax.php:323
-msgid "Bad request!"
-msgstr "Ошибка запроса"
-
-#: xxx/learnpress/inc/class-lp-ajax.php:328
-msgid "Error while completing lesson."
-msgstr "Во время завершения урока произошла ошибка."
-
-#: xxx/learnpress/inc/class-lp-ajax.php:418
-msgid "Load question error. Try again!"
-msgstr "Ошибка загрузки вопроса, попробуйте еще раз"
-
-#: xxx/learnpress/inc/class-lp-ajax.php:426
-msgid "Something is wrong. Try again!"
-msgstr "Ошибка"
-
-#: xxx/learnpress/inc/class-lp-ajax.php:477
-msgid "Something went wrong. Please try again!"
-msgstr "Ошибка"
-
-#: xxx/learnpress/inc/class-lp-ajax.php:525
-#: xxx/learnpress/inc/class-lp-ajax.php:568
-msgid "Error! Invalid lesson or security checked failure"
-msgstr "Ошибка"
-
-#: xxx/learnpress/inc/class-lp-ajax.php:574
-#, php-format
-msgid "You have retaken course \"%s\""
-msgstr "Вы снова записались на курс \"%s\""
-
-#: xxx/learnpress/inc/class-lp-ajax.php:579
-msgid "Error! You can not retake course"
-msgstr "Ошибка, вы не можете взять курс повторно"
-
-#: xxx/learnpress/inc/class-lp-ajax.php:591
-msgid "The quiz ID is empty"
-msgstr "ID теста пустой"
-
-#: xxx/learnpress/inc/class-lp-ajax.php:603
-msgid "Something is wrong! Please try again"
-msgstr "Ошибка"
-
-#: xxx/learnpress/inc/class-lp-ajax.php:612
-msgid "Please login to take this quiz"
-msgstr "Авторизуйтесь для прохождения теста"
-
-#: xxx/learnpress/inc/class-lp-ajax.php:632
-msgid "You have started this quiz"
-msgstr "Вы начали тест"
-
-#: xxx/learnpress/inc/class-lp-assets.php:791
-msgid "Password and confirmation password do not match"
-msgstr "Пароли не совпадают"
-
-#: xxx/learnpress/inc/class-lp-assets.php:792
-msgid "This field is required"
-msgstr "Это поле обязательно"
-
 #: xxx/learnpress/inc/class-lp-breadcrumb.php:124
 msgid "Error 404"
 msgstr ""
@@ -865,14 +726,6 @@ msgstr ""
 msgid "Item does not exists!"
 msgstr ""
 
-#: xxx/learnpress/inc/class-lp-checkout.php:167
-msgid "Please enter user login"
-msgstr "Введите логин"
-
-#: xxx/learnpress/inc/class-lp-checkout.php:171
-msgid "Please enter user password"
-msgstr "Введите пароль"
-
 #: xxx/learnpress/inc/class-lp-checkout.php:221
 msgid "Please select a payment method"
 msgstr ""
@@ -890,11 +743,6 @@ msgstr ""
 #: xxx/learnpress/inc/class-lp-checkout.php:260
 msgid "Invalid payment method."
 msgstr ""
-
-#: xxx/learnpress/inc/class-lp-emails.php:42
-#: xxx/learnpress/inc/class-lp-emails.php:49
-msgid "Cheatin&#8217; huh?"
-msgstr "Не жульничайте!"
 
 #: xxx/learnpress/inc/class-lp-install.php:89
 msgid ""
@@ -944,10 +792,6 @@ msgstr ""
 #: xxx/learnpress/inc/class-lp-shortcodes.php:332
 msgid "Invalid order!"
 msgstr ""
-
-#: xxx/learnpress/inc/class-lp-shortcodes.php:214
-msgid "Please login to fill in this form."
-msgstr "Авторизуйтесь"
 
 #: xxx/learnpress/inc/class-lp-shortcodes.php:217
 msgid "You are a teacher now."
@@ -4525,10 +4369,6 @@ msgstr ""
 msgid "[{{site_title}}]  You have enrolled in this course ({{course_name}})"
 msgstr ""
 
-#: xxx/learnpress/inc/emails/class-lp-email-finished-course.php:24
-msgid "[{{site_title}}] You have finished this course ({{course_name}})"
-msgstr "[{{site_title}}] Вы окончили этот курс ({{course_name}})"
-
 #: xxx/learnpress/inc/emails/class-lp-email-new-course.php:25
 msgid ""
 "[{{site_title}}] New course has been submitted for review ({{course_name}})"
@@ -5515,6 +5355,166 @@ msgstr ""
 msgid "Not Started"
 msgstr ""
 
+#: content-none.php:28
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr "Не найдено, повторите поиск"
+
+#: inc/learnpress-v2-functions.php:1199
+#: xxx/learnpress/inc/user/lp-user-functions.php:947
+msgid "You have already finished course"
+msgstr "Вы уже закончили этот курс"
+
+#: inc/learnpress-v2-functions.php:1202
+#: xxx/learnpress/inc/user/lp-user-functions.php:950
+msgid "You have already enrolled in this course"
+msgstr "Вы уже записались на этот курс"
+
+#: inc/widgets/login-form/tpl/base.php:203
+#: inc/widgets/login-popup/tpl/base.php:58
+msgid "Remember Me"
+msgstr "Запомнить меня"
+
+#: xxx/learnpress/inc/class-lp-ajax.php:89
+msgid "Upload profile avatar error."
+msgstr "Ошибка"
+
+#: xxx/learnpress/inc/class-lp-ajax.php:132
+msgid "Invalid course"
+msgstr "Неверный курс"
+
+#: xxx/learnpress/inc/class-lp-ajax.php:144
+#, php-format
+msgid "You have enrolled in this course <strong>%s</strong>"
+msgstr "Вы записались на этот курс"
+
+#: xxx/learnpress/inc/class-lp-ajax.php:147
+#, php-format
+msgid ""
+"Sorry! The course <strong>%s</strong> you want to enroll has failed! Please "
+"contact site's administrator for more information."
+msgstr ""
+"Извините, вы не можете записаться на данный курс. Обратитесь к администрации "
+"сайта."
+
+#: xxx/learnpress/inc/class-lp-ajax.php:173
+msgid "Please enter username"
+msgstr "Введите имя пользователя"
+
+#: xxx/learnpress/inc/class-lp-ajax.php:177
+msgid "Please enter password"
+msgstr "Введите пароль"
+
+#: xxx/learnpress/inc/class-lp-ajax.php:225
+msgid "Please enter your username and/or password"
+msgstr "Введите логин\\пароль"
+
+#: xxx/learnpress/inc/class-lp-ajax.php:243
+#, php-format
+msgid "Welcome back, %s. You've already enrolled this course"
+msgstr "Добро пожаловать, %s. Вы уже записались на этот курс."
+
+#: xxx/learnpress/inc/class-lp-ajax.php:255
+#, php-format
+msgid "Welcome back, %s! Redirecting..."
+msgstr "Добро пожаловать, %s. Перенаправляем..."
+
+#: xxx/learnpress/inc/class-lp-ajax.php:291
+msgid "Access denied!"
+msgstr "Нет доступа"
+
+#: xxx/learnpress/inc/class-lp-ajax.php:299
+#, php-format
+msgid "You have finished this course \"%s\""
+msgstr "Вы окончили этот курс"
+
+#: xxx/learnpress/inc/class-lp-ajax.php:304
+msgid ""
+"Error! You cannot finish this course. Please contact your administrator for "
+"more information."
+msgstr ""
+"Ошибка! Вы не можете окончить этот курс. Обратитесь к администрации сайта."
+
+#: xxx/learnpress/inc/class-lp-ajax.php:323
+msgid "Bad request!"
+msgstr "Ошибка запроса"
+
+#: xxx/learnpress/inc/class-lp-ajax.php:328
+msgid "Error while completing lesson."
+msgstr "Во время завершения урока произошла ошибка."
+
+#: xxx/learnpress/inc/class-lp-ajax.php:418
+msgid "Load question error. Try again!"
+msgstr "Ошибка загрузки вопроса, попробуйте еще раз"
+
+#: xxx/learnpress/inc/class-lp-ajax.php:426
+msgid "Something is wrong. Try again!"
+msgstr "Ошибка"
+
+#: xxx/learnpress/inc/class-lp-ajax.php:477
+msgid "Something went wrong. Please try again!"
+msgstr "Ошибка"
+
+#: xxx/learnpress/inc/class-lp-ajax.php:525
+#: xxx/learnpress/inc/class-lp-ajax.php:568
+msgid "Error! Invalid lesson or security checked failure"
+msgstr "Ошибка"
+
+#: xxx/learnpress/inc/class-lp-ajax.php:574
+#, php-format
+msgid "You have retaken course \"%s\""
+msgstr "Вы снова записались на курс \"%s\""
+
+#: xxx/learnpress/inc/class-lp-ajax.php:579
+msgid "Error! You can not retake course"
+msgstr "Ошибка, вы не можете взять курс повторно"
+
+#: xxx/learnpress/inc/class-lp-ajax.php:591
+msgid "The quiz ID is empty"
+msgstr "ID теста пустой"
+
+#: xxx/learnpress/inc/class-lp-ajax.php:603
+msgid "Something is wrong! Please try again"
+msgstr "Ошибка"
+
+#: xxx/learnpress/inc/class-lp-ajax.php:612
+msgid "Please login to take this quiz"
+msgstr "Авторизуйтесь для прохождения теста"
+
+#: xxx/learnpress/inc/class-lp-ajax.php:632
+msgid "You have started this quiz"
+msgstr "Вы начали тест"
+
+#: xxx/learnpress/inc/class-lp-assets.php:791
+msgid "Password and confirmation password do not match"
+msgstr "Пароли не совпадают"
+
+#: xxx/learnpress/inc/class-lp-assets.php:792
+msgid "This field is required"
+msgstr "Это поле обязательно"
+
+#: xxx/learnpress/inc/class-lp-checkout.php:167
+msgid "Please enter user login"
+msgstr "Введите логин"
+
+#: xxx/learnpress/inc/class-lp-checkout.php:171
+msgid "Please enter user password"
+msgstr "Введите пароль"
+
+#: xxx/learnpress/inc/class-lp-emails.php:42
+#: xxx/learnpress/inc/class-lp-emails.php:49
+msgid "Cheatin&#8217; huh?"
+msgstr "Не жульничайте!"
+
+#: xxx/learnpress/inc/class-lp-shortcodes.php:214
+msgid "Please login to fill in this form."
+msgstr "Авторизуйтесь"
+
+#: xxx/learnpress/inc/emails/class-lp-email-finished-course.php:24
+msgid "[{{site_title}}] You have finished this course ({{course_name}})"
+msgstr "[{{site_title}}] Вы окончили этот курс ({{course_name}})"
+
 #: xxx/learnpress/inc/class-lp-ajax.php:330
 msgid "You have completed lesson."
 msgstr "Вы заваершили урок"
@@ -6052,7 +6052,7 @@ msgstr "Главная"
 
 #: inc/custom-functions.php:63 inc/templates/heading-top.php:266
 msgid "Blog"
-msgstr "Блог"
+msgstr "Новости"
 
 #: inc/custom-functions.php:68 inc/custom-functions.php:161
 #: inc/admin/customizer-sections/event.php:4 inc/templates/heading-top.php:209
@@ -6492,7 +6492,7 @@ msgstr "Все курсы"
 #: xxx/learnpress/inc/custom-post-types/question.php:244
 #: xxx/learnpress/inc/custom-post-types/quiz.php:91
 msgid "Quiz"
-msgstr "Викторина"
+msgstr "Тест"
 
 #: inc/learnpress-functions.php:629 inc/learnpress-v1-functions.php:737
 #: inc/learnpress-v2-functions.php:1038
@@ -6507,7 +6507,7 @@ msgstr " мин."
 #: inc/learnpress-functions.php:685 inc/learnpress-v1-functions.php:588
 #: inc/learnpress-v2-functions.php:448
 msgid "You May Like"
-msgstr "Вам может понравиться"
+msgstr "Вам может понравится"
 
 #: inc/learnpress-functions.php:755 inc/learnpress-functions.php:806
 #: inc/learnpress-v1-functions.php:463 inc/learnpress-v1-functions.php:527
@@ -6836,7 +6836,7 @@ msgstr "Учетная запись"
 
 #: inc/related.php:8
 msgid "You may also like"
-msgstr "Вам также может понравиться"
+msgstr "Вам также может понравится"
 
 #: inc/tax-meta.php:15 inc/tax-meta.php:32
 msgid "Category Meta Box"
@@ -7508,11 +7508,11 @@ msgstr "Показать автора"
 
 #: inc/admin/customizer-sections/display-frontpage.php:6
 msgid "Blog Page"
-msgstr "Страница блога"
+msgstr "Страница новостей"
 
 #: inc/admin/customizer-sections/display-frontpage.php:12
 msgid "Blog Page Layout"
-msgstr "Макет страницы блога"
+msgstr "Макет страницы новостей"
 
 #: inc/admin/customizer-sections/display-frontpage.php:70
 msgid "Custom Title"
@@ -10367,7 +10367,7 @@ msgstr "Показывает список сообщений"
 
 #: inc/widgets/list-post/list-post.php:32
 msgid "From Blog"
-msgstr "Из блога"
+msgstr "Из новостей"
 
 #: inc/widgets/list-post/list-post.php:42
 msgid "Number Post"
@@ -10981,7 +10981,7 @@ msgstr "Отображает все события во вкладке"
 
 #: inc/widgets/tab-event/tpl/base.php:91 tp-event/archive-event.php:41
 msgid "Happening"
-msgstr "Случайно"
+msgstr "Предстоящие"
 
 #: inc/widgets/tab-event/tpl/base.php:92 tp-event/archive-event.php:42
 msgid "Upcoming"
@@ -13364,7 +13364,7 @@ msgstr "Оценка %d из 5"
 
 #: woocommerce/single-product/up-sells.php:51
 msgid "You may also like&hellip;"
-msgstr "Вам может понравиться&hellip;"
+msgstr "Вам может понравится&hellip;"
 
 #: woocommerce/single-product/tabs/description.php:22
 msgid "Product Description"

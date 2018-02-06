@@ -18,7 +18,7 @@ class WPForms_Field_Textarea extends WPForms_Field {
 	public function init() {
 
 		// Define field type information
-		$this->name  = __( 'Paragraph Text', 'wpforms' );
+		$this->name  = esc_html__( 'Paragraph Text', 'wpforms' );
 		$this->type  = 'textarea';
 		$this->icon  = 'fa-paragraph';
 		$this->order = 5;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Admin notices, on the fly.
  *
@@ -8,7 +9,7 @@
  * @example
  * WPForms_Admin_Notice::warning( 'Do something please.' );
  *
- * @todo       Persistent, dismissable notices.
+ * @todo       Persistent, dismissible notices.
  * @link       https://gist.github.com/monkeymonk/2ea17e2260daaecd0049c46c8d6c85fd
  * @package    WPForms
  * @author     WPForms
@@ -55,7 +56,6 @@ class WPForms_Admin_Notice {
 	 * @since 1.3.9
 	 */
 	public function __construct() {
-
 		add_action( 'admin_notices', array( &$this, 'display' ) );
 	}
 
@@ -66,7 +66,7 @@ class WPForms_Admin_Notice {
 	 */
 	public function display() {
 
-		if ( ! current_user_can( apply_filters( 'wpforms_manage_cap', 'manage_options' ) ) ) {
+		if ( ! wpforms_current_user_can() ) {
 			return;
 		}
 
@@ -77,15 +77,16 @@ class WPForms_Admin_Notice {
 	 * Add notice to instance property.
 	 *
 	 * @since 1.3.9
+	 *
 	 * @param string $message Message to display.
 	 * @param string $type Type of the notice (default: '').
 	 */
 	public static function add( $message, $type = '' ) {
 
-		$instance   = self::getInstance();
-		$id         = 'wpforms-notice-' . ( count( $instance->notices ) + 1 );
-		$type       = ! empty( $type ) ? 'notice-' . $type : '';
-		$notice     = sprintf( '<div class="notice wpforms-notice %s" id="%s">%s</div>', $type, $id, wpautop( $message ) );
+		$instance = self::getInstance();
+		$id       = 'wpforms-notice-' . ( count( $instance->notices ) + 1 );
+		$type     = ! empty( $type ) ? 'notice-' . $type : '';
+		$notice   = sprintf( '<div class="notice wpforms-notice %s" id="%s">%s</div>', $type, $id, wpautop( $message ) );
 
 		$instance->notices[] = $notice;
 	}
@@ -98,7 +99,6 @@ class WPForms_Admin_Notice {
 	 * @param string $message Message to display.
 	 */
 	public static function info( $message ) {
-
 		self::add( $message, 'info' );
 	}
 
@@ -110,7 +110,6 @@ class WPForms_Admin_Notice {
 	 * @param string $message Message to display.
 	 */
 	public static function error( $message ) {
-
 		self::add( $message, 'error' );
 	}
 
@@ -122,7 +121,6 @@ class WPForms_Admin_Notice {
 	 * @param string $message Message to display.
 	 */
 	public static function success( $message ) {
-
 		self::add( $message, 'success' );
 	}
 
@@ -134,7 +132,6 @@ class WPForms_Admin_Notice {
 	 * @param string $message Message to display.
 	 */
 	public static function warning( $message ) {
-
 		self::add( $message, 'warning' );
 	}
 }

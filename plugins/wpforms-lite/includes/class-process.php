@@ -77,7 +77,7 @@ class WPForms_Process {
 
 		// Validate form is real and active (published).
 		if ( ! $form || 'publish' !== $form->post_status ) {
-			$this->errors[ $form_id ]['header'] = __( 'Invalid form.', 'wpforms' );
+			$this->errors[ $form_id ]['header'] = esc_html__( 'Invalid form.', 'wpforms' );
 			return;
 		}
 
@@ -114,10 +114,10 @@ class WPForms_Process {
 				$data  = wp_remote_get( 'https://www.google.com/recaptcha/api/siteverify?secret=' . $secret_key . '&response=' . $_POST['g-recaptcha-response'] );
 				$data  = json_decode( wp_remote_retrieve_body( $data ) );
 				if ( empty( $data->success ) ) {
-					$this->errors[ $form_id ]['recaptcha'] = __( 'Incorrect reCAPTCHA, please try again.', 'wpforms' );
+					$this->errors[ $form_id ]['recaptcha'] = esc_html__( 'Incorrect reCAPTCHA, please try again.', 'wpforms' );
 				}
 			} else {
-				$this->errors[ $form_id ]['recaptcha'] = __( 'reCAPTCHA is required.', 'wpforms' );
+				$this->errors[ $form_id ]['recaptcha'] = esc_html__( 'reCAPTCHA is required.', 'wpforms' );
 			}
 		}
 
@@ -129,7 +129,7 @@ class WPForms_Process {
 
 		if ( ! empty( $errors[ $form_id ] ) ) {
 			if ( empty( $this->errors[ $form_id ]['header'] ) ) {
-				$errors[ $form_id ]['header'] = __( 'Form has not been submitted, please see the errors below.', 'wpforms' );
+				$errors[ $form_id ]['header'] = esc_html__( 'Form has not been submitted, please see the errors below.', 'wpforms' );
 			}
 			$this->errors = $errors;
 			return;
@@ -141,7 +141,7 @@ class WPForms_Process {
 			'1' == $form_data['settings']['honeypot'] &&
 			! empty( $entry['hp'] )
 		) {
-				$honeypot = __( 'WPForms honeypot field triggered.', 'wpforms' );
+				$honeypot = esc_html__( 'WPForms honeypot field triggered.', 'wpforms' );
 		}
 
 		$honeypot = apply_filters( 'wpforms_process_honeypot', $honeypot, $this->fields, $entry, $form_data );
@@ -179,7 +179,7 @@ class WPForms_Process {
 			// One last error check - don't proceed if there are any errors.
 			if ( ! empty( $this->errors[ $form_id ] ) ) {
 				if ( empty( $this->errors[ $form_id ]['header'] ) ) {
-					$this->errors[ $form_id ]['header'] = __( 'Form has not been submitted, please see the errors below.', 'wpforms' );
+					$this->errors[ $form_id ]['header'] = esc_html__( 'Form has not been submitted, please see the errors below.', 'wpforms' );
 				}
 				return;
 			}
@@ -316,7 +316,7 @@ class WPForms_Process {
 	 * @param array $fields
 	 * @param array $entry
 	 * @param array $form_data
-	 * @param array $entry_id
+	 * @param int $entry_id
 	 * @param string $context
 	 */
 	public function entry_email( $fields, $entry, $form_data, $entry_id, $context = '' ) {
@@ -329,7 +329,7 @@ class WPForms_Process {
 			return;
 		}
 
-		// Provide the opportunity to override via a filter
+		// Provide the opportunity to override via a filter.
 		if ( ! apply_filters( 'wpforms_entry_email', true, $fields, $entry, $form_data ) ) {
 			return;
 		}
@@ -362,12 +362,13 @@ class WPForms_Process {
 				continue;
 			}
 
-			$email  = array();
+			$email = array();
 
 			// Setup email properties.
+			/* translators: %s - form name. */
+			$email['subject']        = ! empty( $notification['subject'] ) ? $notification['subject'] : sprintf( esc_html__( 'New %s Entry', 'wpforms' ), $form_data['settings']['form_title'] );
 			$email['address']        = explode( ',', apply_filters( 'wpforms_process_smart_tags', $notification['email'], $form_data, $fields, $this->entry_id ) );
 			$email['address']        = array_map( 'sanitize_email', $email['address'] );
-			$email['subject']        = ! empty( $notification['subject'] ) ? $notification['subject'] : sprintf( _x( 'New %s Entry', 'Form name', 'wpforms ' ), $form_data['settings']['form_title'] );
 			$email['sender_address'] = ! empty( $notification['sender_address'] ) ? $notification['sender_address'] : get_option( 'admin_email' );
 			$email['sender_name']    = ! empty( $notification['sender_name'] ) ? $notification['sender_name'] : get_bloginfo( 'name' );
 			$email['replyto']        = ! empty( $notification['replyto'] ) ? $notification['replyto'] : false;
@@ -376,12 +377,12 @@ class WPForms_Process {
 
 			// Create new email.
 			$emails = new WPForms_WP_Emails;
-			$emails->__set( 'form_data',    $form_data               );
-			$emails->__set( 'fields',       $fields                  );
-			$emails->__set( 'entry_id',     $this->entry_id          );
-			$emails->__set( 'from_name',    $email['sender_name']    );
+			$emails->__set( 'form_data', $form_data );
+			$emails->__set( 'fields', $fields );
+			$emails->__set( 'entry_id', $this->entry_id );
+			$emails->__set( 'from_name', $email['sender_name'] );
 			$emails->__set( 'from_address', $email['sender_address'] );
-			$emails->__set( 'reply_to',     $email['replyto']        );
+			$emails->__set( 'reply_to', $email['replyto'] );
 
 			// Maybe include CC.
 			if ( ! empty( $notification['carboncopy'] ) && wpforms_setting( 'email-carbon-copy', false ) ) {

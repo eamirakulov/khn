@@ -144,8 +144,8 @@ function thim_core_get_ownership( $path ) {
 		'name' => '',
 	);
 
-	$owner = wp_parse_args( posix_getpwuid( fileowner( $path ) ), $default );
-	$group = wp_parse_args( posix_getpwuid( filegroup( $path ) ), $default );
+	$owner = wp_parse_args( posix_getpwuid( @fileowner( $path ) ), $default );
+	$group = wp_parse_args( posix_getpwuid( @filegroup( $path ) ), $default );
 
 	return array(
 		'owner' => $owner['name'],
@@ -163,7 +163,7 @@ function thim_core_get_ownership( $path ) {
  * @return string
  */
 function thim_core_get_chmod( $path ) {
-	return substr( sprintf( '%o', fileperms( $path ) ), - 4 );
+	return substr( sprintf( '%o', @fileperms( $path ) ), - 4 );
 }
 
 /**
@@ -222,13 +222,22 @@ function thim_core_test_request( $url ) {
 	$response         = wp_safe_remote_get( $url );
 	$successful       = true;
 	$message_response = 'success';
+
 	if ( is_wp_error( $response ) ) {
 		$successful       = false;
 		$message_response = $response->get_error_message();
 	}
 
+	$status_code = wp_remote_retrieve_response_code( $response );
+
+	if ( $status_code == 403 || $status_code >= 500 ) {
+		$successful       = false;
+		$message_response = wp_remote_retrieve_response_message( $response );
+	}
+
 	return array(
 		'return'  => $successful,
 		'message' => $message_response,
+		'url'     => $url
 	);
 }

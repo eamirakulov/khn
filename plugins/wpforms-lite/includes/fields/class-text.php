@@ -18,7 +18,7 @@ class WPForms_Field_Text extends WPForms_Field {
 	public function init() {
 
 		// Define field type information.
-		$this->name  = __( 'Single Line Text', 'wpforms' );
+		$this->name  = esc_html__( 'Single Line Text', 'wpforms' );
 		$this->type  = 'text';
 		$this->icon  = 'fa-text-width';
 		$this->order = 3;

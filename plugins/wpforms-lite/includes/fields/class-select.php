@@ -18,23 +18,23 @@ class WPForms_Field_Select extends WPForms_Field {
 	public function init() {
 
 		// Define field type information
-		$this->name     = __( 'Dropdown', 'wpforms' );
+		$this->name     = esc_html__( 'Dropdown', 'wpforms' );
 		$this->type     = 'select';
 		$this->icon     = 'fa-caret-square-o-down';
 		$this->order    = 7;
 		$this->defaults = array(
 			1 => array(
-				'label'   => __( 'First Choice', 'wpforms' ),
+				'label'   => esc_html__( 'First Choice', 'wpforms' ),
 				'value'   => '',
 				'default' => '',
 			),
 			2 => array(
-				'label'   => __( 'Second Choice', 'wpforms' ),
+				'label'   => esc_html__( 'Second Choice', 'wpforms' ),
 				'value'   => '',
 				'default' => '',
 			),
 			3 => array(
-				'label'   => __( 'Third Choice', 'wpforms' ),
+				'label'   => esc_html__( 'Third Choice', 'wpforms' ),
 				'value'   => '',
 				'default' => '',
 			),
@@ -94,8 +94,8 @@ class WPForms_Field_Select extends WPForms_Field {
 				array(
 					'slug'    => 'show_values',
 					'value'   => isset( $field['show_values'] ) ? $field['show_values'] : '0',
-					'desc'    => __( 'Show Values', 'wpforms' ),
-					'tooltip' => __( 'Check this to manually set form field values.', 'wpforms' ),
+					'desc'    => esc_html__( 'Show Values', 'wpforms' ),
+					'tooltip' => esc_html__( 'Check this to manually set form field values.', 'wpforms' ),
 				),
 				false
 			);
@@ -197,7 +197,7 @@ class WPForms_Field_Select extends WPForms_Field {
 			// Notify if currently empty.
 			if ( empty( $values ) ) {
 				$values = array(
-					'label' => __( '(empty)', 'wpforms' ),
+					'label' => esc_html__( '(empty)', 'wpforms' ),
 				);
 			}
 

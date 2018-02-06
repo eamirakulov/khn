@@ -3,9 +3,16 @@
 Plugin Name: WP Google Maps - Pro Add-on
 Plugin URI: http://www.wpgmaps.com
 Description: This is the Pro add-on for WP Google Maps. The Pro add-on enables you to add descriptions, pictures, links and custom icons to your markers as well as allows you to download your markers to a CSV file for quick editing and re-upload them when complete.
-Version:  6.18
+Version:  6.19
 Author: WP Google Maps
 Author URI: http://www.wpgmaps.com
+ * 
+ * 
+ * 
+ * 6.19 - 2018-01-14 - Medium priority
+ * Fixed a bug that caused the plugin to want to update all the time
+ * Fixed a bug that caused the Google Maps API files to be loaded on all pages
+ * Fixed PHP warnings
  * 
  * 6.18 - 2017-11-16 - Low priority
  * Fixed a missing image in the map settings panel
@@ -696,7 +703,7 @@ Author URI: http://www.wpgmaps.com
 //error_reporting(E_ERROR);
 global $wpgmza_pro_version;
 global $wpgmza_pro_string;
-$wpgmza_pro_version = "6.16";
+$wpgmza_pro_version = "6.19";
 $wpgmza_pro_string = "pro";
 
 global $wpgmza_current_map_cat_selection;
@@ -726,6 +733,8 @@ include ("wp-google-maps-pro_categories.php");
 include ("wp-google-maps-pro_wizard.php");
 include ("wp-google-maps-pro_export_import.class.php");
 include ("wpgmza.php");
+
+
 
 add_action('admin_head', 'wpgmaps_upload_csv');
 add_action('init', 'wpgmza_register_pro_version');
@@ -1418,10 +1427,10 @@ function wpgmza_pro_menu() {
 
 
 
-		for ($i=0;$i<4;$i++) {
+		for ($i=0;$i<5;$i++) {
             if (!isset($wpgmza_iw_class[$i])) { $wpgmza_iw_class[$i] = ""; }
         }
-		for ($i=0;$i<4;$i++) {
+		for ($i=0;$i<5;$i++) {
             if (!isset($infowwindow_sel_checked[$i])) { $infowwindow_sel_checked[$i] = ""; }
         }	
 		
@@ -3469,7 +3478,7 @@ function wpgmaps_user_javascript_pro($atts = false) {
 
     global $short_code_active;
 	
-    if ($short_code_active || true) {
+    if ($short_code_active == true) {
 
 
 	    global $wpgmza_count;
@@ -6437,6 +6446,7 @@ function wpgmaps_settings_page_sub($section) {
 
     }
 
+
     if ($section == "infowindow") {
         $wpgmza_settings = get_option("WPGMZA_OTHER_SETTINGS");
 
@@ -6464,9 +6474,14 @@ function wpgmaps_settings_page_sub($section) {
 		 */
 
 
-		if (isset($wpgmza_settings['wpgmza_iw_type'])) { $infowwindow_sel_checked[$wpgmza_settings['wpgmza_iw_type']] = "checked"; $wpgmza_iw_class[$wpgmza_settings['wpgmza_iw_type']] = "wpgmza_mlist_selection_activate"; } else {  $wpgmza_iw_type = false; }
+		if (isset($wpgmza_settings['wpgmza_iw_type'])) { 
+			$infowwindow_sel_checked[$wpgmza_settings['wpgmza_iw_type']] = "checked"; $wpgmza_iw_class[$wpgmza_settings['wpgmza_iw_type']] = "wpgmza_mlist_selection_activate"; 
+		} else {  
+			$wpgmza_iw_type = false; 
+		}
 
 
+		
 
 		for ($i=0;$i<5;$i++) {
             if (!isset($wpgmza_iw_class[$i])) { $wpgmza_iw_class[$i] = ""; }

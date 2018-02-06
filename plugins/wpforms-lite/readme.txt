@@ -112,8 +112,6 @@ This plugin is created by <a href="http://www.jaredatchison.com/" rel="friend" t
 If you like this plugin, then consider checking out our other projects:
 
 * <a href="http://optinmonster.com/" rel="friend" title="OptinMonster">OptinMonster</a> - Get More Email Subscribers
-* <a href="http://soliloquywp.com/" rel="friend" title="Soliloquy">Soliloquy</a> - Best WordPress Slider Plugin
-* <a href="http://enviragallery.com/" rel="friend" title="Envira Gallery">Envira Gallery</a> - Best WordPress Gallery Plugin
 * <a href="https://www.monsterinsights.com/" rel="friend" title="MonsterInsights">MonsterInsights</a> - Best Google Analytics Plugin for WordPress
 
 Visit <a href="http://www.wpbeginner.com/" rel="friend" title="WPBeginner">WPBeginner</a> to learn from our <a href="http://www.wpbeginner.com/category/wp-tutorials/" rel="friend" title="WordPress Tutorials">WordPress Tutorials</a> and find out about other <a href="http://www.wpbeginner.com/category/plugins/" rel="friend" title="Best WordPress Plugins">best WordPress plugins</a>.
@@ -129,7 +127,9 @@ Visit <a href="http://www.wpbeginner.com/" rel="friend" title="WPBeginner">WPBeg
 == Screenshots ==
 
 1. WPForms Drag & Drop Online Form Builder
-2. WPForms Form Preview
+2. Adding New Field
+3. Form Preview
+4. Form Settings
 
 == Frequently Asked Questions ==
 
@@ -209,6 +209,17 @@ Thank you
 Syed Balkhi
 
 == Changelog ==
+
+= 1.4.4 =
+- Added: Advanced setting for Multiple Choice and Checkbox fields to randomize choices
+- Changed: Admin menu icons now uses SVG instead of custom font icon
+- Changed: Reviewed all translatable strings, improved escaping and formatting
+- Changed: External links have `rel="noopener noreferrer"` improve security
+- Changed: Permission check centralized into a single function (`wpforms_current_user_can()`)
+- Changed: Required label field text centralized into a single function (`wpforms_get_required_label()`)
+- Fixed: Typo in German translation
+- Fixed: Required email provider connection fields not highlighting when left empty
+- Fixed: Inside form builder, notification name area breaking into multiple lines on smaller screens
 
 = 1.4.3 =
 - Added: Early filter for form data before form output, `wpforms_frontend_form_data`

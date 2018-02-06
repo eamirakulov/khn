@@ -64,7 +64,7 @@
 			$rows = $rows || $('.wpforms-conditional-row'); // jshint ignore:line
 
 			var fields     = $.extend({}, allFields),
-				allowed    = ['text', 'textarea', 'select', 'radio', 'email', 'url', 'checkbox', 'number', 'payment-multiple', 'payment-select', 'hidden'],
+				allowed    = ['text', 'textarea', 'select', 'radio', 'email', 'url', 'checkbox', 'number', 'payment-multiple', 'payment-select', 'hidden', 'rating'],
 				changed    = [],
 				key        = '',
 				label      = '';
@@ -315,7 +315,13 @@
 			} else {
 
 				// Text type fields (everything else) use text inputs
-				$element = $('<input>').attr({ type: 'text', name: name, class: 'wpforms-conditional-value' });
+
+				// Determine input type.
+				var inputType = 'text';
+				if ( data.field.type === 'rating' ) {
+					inputType = 'number';
+				}
+				$element = $('<input>').attr({ type: inputType, name: name, class: 'wpforms-conditional-value' });
 				$operator.find('option').prop('disabled', false);
 			}
 

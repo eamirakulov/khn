@@ -18,7 +18,7 @@ class WPForms_Field_Email extends WPForms_Field {
 	public function init() {
 
 		// Define field type information.
-		$this->name  = __( 'Email', 'wpforms' );
+		$this->name  = esc_html__( 'Email', 'wpforms' );
 		$this->type  = 'email';
 		$this->icon  = 'fa-envelope-o';
 		$this->order = 17;
@@ -65,7 +65,7 @@ class WPForms_Field_Email extends WPForms_Field {
 					),
 					'sublabel' => array(
 						'hidden'   => ! empty( $field['sublabel_hide'] ),
-						'value'    => __( 'Email', 'wpforms' ),
+						'value'    => esc_html__( 'Email', 'wpforms' ),
 					),
 				),
 				'secondary' => array(
@@ -88,7 +88,7 @@ class WPForms_Field_Email extends WPForms_Field {
 					'required' => ! empty( $field['required'] ) ? 'required' : '',
 					'sublabel' => array(
 						'hidden'   => ! empty( $field['sublabel_hide'] ),
-						'value'    => __( 'Confirm Email', 'wpforms' ),
+						'value'    => esc_html__( 'Confirm Email', 'wpforms' ),
 					),
 					'value'    => '',
 				),
@@ -204,8 +204,8 @@ class WPForms_Field_Email extends WPForms_Field {
 			array(
 				'slug'    => 'confirmation',
 				'value'   => isset( $field['confirmation'] ) ? '1' : '0',
-				'desc'    => __( 'Enable Email Confirmation', 'wpforms' ),
-				'tooltip' => __( 'Check this option to ask users to provide an email address twice.', 'wpforms' ),
+				'desc'    => esc_html__( 'Enable Email Confirmation', 'wpforms' ),
+				'tooltip' => esc_html__( 'Check this option to ask users to provide an email address twice.', 'wpforms' ),
 			),
 			false
 		);
@@ -243,8 +243,8 @@ class WPForms_Field_Email extends WPForms_Field {
 			$field,
 			array(
 				'slug'    => 'confirmation_placeholder',
-				'value'   => __( 'Confirmation Placeholder Text', 'wpforms' ),
-				'tooltip' => __( 'Enter text for the confirmation field placeholder.', 'wpforms' ),
+				'value'   => esc_html__( 'Confirmation Placeholder Text', 'wpforms' ),
+				'tooltip' => esc_html__( 'Enter text for the confirmation field placeholder.', 'wpforms' ),
 			),
 			false
 		);
